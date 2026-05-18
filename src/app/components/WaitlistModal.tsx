@@ -140,7 +140,7 @@ export function WaitlistModal({ onClose, tradeContext }: WaitlistModalProps) {
               <p className="text-[#6B6B6B] text-[14px] leading-[1.65] mb-6">
                 {tradeContext
                   ? "Polytrade isn't live yet — but you clearly have good instincts. Join the waitlist and be first to place this trade when we launch."
-                  : "We're launching hyperlocal prediction markets across Africa and the Philippines. Join the waitlist and get early access when we go live."}
+                  : "We're launching hyperlocal conviction markets across Africa and the Philippines. Join the waitlist and get early access when we go live."}
               </p>
 
               {tradeContext && (
