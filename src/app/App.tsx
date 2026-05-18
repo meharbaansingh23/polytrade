@@ -395,16 +395,6 @@ export default function App() {
               </div>
             </div>
 
-            <div className="text-center mb-10">
-              <div className="text-[12px] font-[500] text-[#6B6B6B] inline-flex flex-wrap items-center justify-center gap-2 tracking-[0.3px]">
-                <span>{filteredMarkets.length} Active Markets</span>
-                <span>·</span>
-                <span>$47,200 Total Volume</span>
-                <span>·</span>
-                <span>312 Traders</span>
-              </div>
-            </div>
-
             <div className="max-w-[1280px] mx-auto pb-16">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {filteredMarkets.map((market) => (
