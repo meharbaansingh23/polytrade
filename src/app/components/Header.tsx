@@ -21,7 +21,7 @@ export function Header({
       style={{ boxShadow: '0 1px 0 #F0F0F0' }}
     >
       <div className="flex items-center">
-        <img src="/polytrade_logo_new.svg" alt="PolyTrade" height="32" className="block" />
+        <img src="/polytrade_logo_new.svg" alt="PolyTrade" height="24" className="block" />
       </div>
 
       {isLoggedIn ? (
