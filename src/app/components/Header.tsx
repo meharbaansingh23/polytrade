@@ -2,27 +2,6 @@ import { useState } from 'react';
 import { ChevronDown, Bell } from 'lucide-react';
 import { AvatarDropdown } from './AvatarDropdown';
 
-interface HeaderProps {
-  isLoggedIn: boolean;
-  balance: number;
-  onWaitlistClick: () => void;
-  onBalanceClick: () => void;
-  onWalletClick: () => void;
-  onProfileClick: () => void;
-  onTransactionHistory: () => void;
-  onLogout: () => void;
-  userInitials: string;
-}
-
-function LogoMark() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="mr-2">
-      <path d="M4 8L8 4L12 8L8 12L4 8Z" fill="#FF4C00" />
-      <path d="M6 8L8 6L10 8L8 10L6 8Z" fill="#FF824F" />
-    </svg>
-  );
-}
-
 export function Header({
   isLoggedIn,
   balance,
@@ -42,10 +21,7 @@ export function Header({
       style={{ boxShadow: '0 1px 0 #F0F0F0' }}
     >
       <div className="flex items-center">
-        <LogoMark />
-        <h1 className="text-[#1D1D1D] m-0 p-0 text-[17px] md:text-[20px] tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600 }}>
-          PolyTrade
-        </h1>
+        <img src="/polytrade_logo_new.svg" alt="PolyTrade" height="32" className="block" />
       </div>
 
       {isLoggedIn ? (
