@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { MarketCard, Market } from './components/MarketCard';
 import { WalletModal, Position } from './components/WalletModal';
@@ -245,6 +245,10 @@ export default function App() {
       value: 7.6,
     },
   ]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [selectedMarket, showProfile, showTransactionHistory]);
 
   const filteredMarkets = mockMarkets.filter((m) => m.country === selectedCountry);
 
