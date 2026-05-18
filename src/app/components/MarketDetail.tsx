@@ -22,7 +22,7 @@ export function MarketDetail({ market, onBack, onWaitlistClick }: MarketDetailPr
 
   return (
     <div className="min-h-screen relative z-10">
-      <div className="px-8 py-6 border-b border-[#F0F0F0] bg-white/80 backdrop-blur-sm">
+      <div className="px-4 md:px-8 py-4 md:py-6 border-b border-[#F0F0F0] bg-white/80 backdrop-blur-sm">
         <button
           onClick={onBack}
           className="flex items-center gap-2 text-[#6B6B6B] hover:text-[#1D1D1D] bg-transparent border-0 p-0 cursor-pointer text-[13px] font-[400] transition-colors duration-200"
@@ -34,19 +34,19 @@ export function MarketDetail({ market, onBack, onWaitlistClick }: MarketDetailPr
         </button>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-8 py-8">
-        <div className="grid grid-cols-[1fr_480px] gap-10">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-5 md:py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-6 lg:gap-10">
           <div>
             <div className="mb-6">
               <span className="text-[11px] font-[700] tracking-[1.5px] text-[#FF4C00] uppercase">
                 {market.category}
               </span>
 
-              <h1 className="text-[#1D1D1D] text-[40px] tracking-[-1.5px] leading-[1.2] mt-2 mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700 }}>
+              <h1 className="text-[#1D1D1D] text-[24px] md:text-[32px] lg:text-[40px] tracking-[-0.5px] md:tracking-[-1px] lg:tracking-[-1.5px] leading-[1.2] mt-2 mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700 }}>
                 {market.question}
               </h1>
 
-              <div className="flex items-center gap-4 text-[13px] font-[400] text-[#6B6B6B]">
+              <div className="flex flex-wrap items-center gap-2 md:gap-4 text-[12px] md:text-[13px] font-[400] text-[#6B6B6B]">
                 <span>Vol ${market.volume.toLocaleString()}</span>
                 <span>·</span>
                 <span>Resolves {market.closesDate}</span>
@@ -101,9 +101,9 @@ export function MarketDetail({ market, onBack, onWaitlistClick }: MarketDetailPr
             </div>
           </div>
 
-          <div className="sticky top-[88px] h-fit">
+          <div className="lg:sticky lg:top-[88px] h-fit">
             <div
-              className="bg-white border border-[#F0F0F0] rounded-[20px] p-7"
+              className="bg-white border border-[#F0F0F0] rounded-[20px] p-4 md:p-7"
               style={{ boxShadow: '0 4px 24px rgba(255, 76, 0, 0.08)' }}
             >
               <div className="mb-4">

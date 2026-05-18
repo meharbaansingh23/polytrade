@@ -334,12 +334,12 @@ export default function App() {
         />
       ) : (
         <main className="relative z-10">
-          <div className="pt-24 pb-14">
-            <div className="max-w-[840px] mx-auto text-center px-8">
+          <div className="pt-[68px] md:pt-24 pb-10 md:pb-14">
+            <div className="max-w-[840px] mx-auto text-center px-4 md:px-8">
               <div className="inline-block px-3.5 py-1.5 bg-[#FFF0EB] border border-[#FFD4C2] rounded-full mb-5">
                 <span className="text-[12px] font-[600] text-[#FF4C00]">✦ PREDICTION MARKETS · LIVE NOW</span>
               </div>
-              <h1 className="text-[#1D1D1D] text-[64px] tracking-[-3px] leading-[1.1] mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700 }}>
+              <h1 className="text-[#1D1D1D] text-[36px] md:text-[52px] lg:text-[64px] tracking-[-1px] md:tracking-[-2px] lg:tracking-[-3px] leading-[1.1] mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700 }}>
                 Your local knowledge.
                 <br />
                 <span className="relative inline-block">
@@ -365,7 +365,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="max-w-[1440px] mx-auto px-8">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="flex items-center justify-center mb-3">
               <div className="bg-white border border-[#F0F0F0] rounded-full p-1">
                 <button
@@ -392,7 +392,7 @@ export default function App() {
             </div>
 
             <div className="text-center mb-10">
-              <div className="text-[12px] font-[500] text-[#6B6B6B] inline-flex items-center gap-2 tracking-[0.3px]">
+              <div className="text-[12px] font-[500] text-[#6B6B6B] inline-flex flex-wrap items-center justify-center gap-2 tracking-[0.3px]">
                 <span>{filteredMarkets.length} Active Markets</span>
                 <span>·</span>
                 <span>$47,200 Total Volume</span>
@@ -402,7 +402,7 @@ export default function App() {
             </div>
 
             <div className="max-w-[1280px] mx-auto pb-16">
-              <div className="grid grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {filteredMarkets.map((market) => (
                   <MarketCard
                     key={market.id}

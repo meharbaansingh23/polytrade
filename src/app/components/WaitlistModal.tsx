@@ -68,7 +68,7 @@ export function WaitlistModal({ onClose, tradeContext }: WaitlistModalProps) {
         `}
       </style>
       <div
-        className="bg-white rounded-[20px] p-10 w-full max-w-[460px] relative"
+        className="bg-white rounded-[16px] md:rounded-[20px] p-7 md:p-10 w-full max-w-[460px] relative"
         style={{
           boxShadow: '0 24px 60px rgba(0,0,0,0.18)',
           animation: 'slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -138,14 +138,14 @@ export function WaitlistModal({ onClose, tradeContext }: WaitlistModalProps) {
               )}
 
               <form onSubmit={handleSubmit} className="w-full mb-3">
-                <div className="flex gap-2 mb-2">
+                <div className="flex flex-col md:flex-row gap-2 mb-2">
                   <input
                     type="email"
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="flex-1 h-12 bg-[#FAFAFA] border-[1.5px] border-[#F0F0F0] rounded-[8px] px-4 text-[#1D1D1D] text-[14px] focus:outline-none focus:border-[#FF4C00] transition-all"
+                    className="w-full md:flex-1 h-12 bg-[#FAFAFA] border-[1.5px] border-[#F0F0F0] rounded-[8px] px-4 text-[#1D1D1D] text-[14px] focus:outline-none focus:border-[#FF4C00] transition-all"
                     style={{
                       boxShadow: 'none',
                     }}
@@ -158,7 +158,7 @@ export function WaitlistModal({ onClose, tradeContext }: WaitlistModalProps) {
                   />
                   <button
                     type="submit"
-                    className="shrink-0 h-12 bg-[#FF4C00] text-white px-6 rounded-[8px] border-0 cursor-pointer hover:bg-[#E64400] transition-colors text-[14px]"
+                    className="w-full md:w-auto md:shrink-0 h-12 bg-[#FF4C00] text-white px-6 rounded-[8px] border-0 cursor-pointer hover:bg-[#E64400] transition-colors text-[14px]"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700 }}
                   >
                     {tradeContext ? 'Notify Me When Live' : 'Join Waitlist'}

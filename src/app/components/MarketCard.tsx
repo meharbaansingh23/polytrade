@@ -25,7 +25,7 @@ export function MarketCard({ market, onClick }: MarketCardProps) {
   return (
     <div
       onClick={onClick}
-      className="bg-white border border-[#F0F0F0] rounded-[16px] px-[22px] pt-[22px] pb-4 cursor-pointer hover:border-[#FFD4C2] hover:-translate-y-[3px] transition-all duration-200 relative group"
+      className="bg-white border border-[#F0F0F0] rounded-[16px] px-4 pt-4 pb-3 md:px-[22px] md:pt-[22px] md:pb-4 cursor-pointer hover:border-[#FFD4C2] hover:-translate-y-[3px] transition-all duration-200 relative group"
       style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }}
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow = '0 8px 32px rgba(255, 76, 0, 0.12)';
@@ -41,15 +41,15 @@ export function MarketCard({ market, onClick }: MarketCardProps) {
         <ChevronRight className="w-4 h-4 text-[#D0D0D0] group-hover:text-[#FF4C00] transition-colors duration-200" />
       </div>
 
-      <h3 className="text-[#1D1D1D] m-0 mb-3.5 text-[15px] font-[700] tracking-[-0.3px] leading-[1.45] line-clamp-2 min-h-[43px]">
+      <h3 className="text-[#1D1D1D] m-0 mb-3.5 text-[13px] md:text-[15px] font-[700] tracking-[-0.3px] leading-[1.45] line-clamp-2 min-h-[38px] md:min-h-[43px]">
         {market.question}
       </h3>
 
       <div className="flex gap-2 mb-2.5">
-        <div className="bg-[#ECFDF5] border border-[#6EE7B7] text-[#059669] px-3 py-1 rounded-full text-[13px] font-[700]">
+        <div className="bg-[#ECFDF5] border border-[#6EE7B7] text-[#059669] px-[10px] md:px-3 py-[6px] md:py-1 rounded-full text-[12px] md:text-[13px] font-[700]">
           YES {Math.round(market.yesPrice * 100)}¢
         </div>
-        <div className="bg-[#FEF2F2] border border-[#FCA5A5] text-[#DC2626] px-3 py-1 rounded-full text-[13px] font-[700]">
+        <div className="bg-[#FEF2F2] border border-[#FCA5A5] text-[#DC2626] px-[10px] md:px-3 py-[6px] md:py-1 rounded-full text-[12px] md:text-[13px] font-[700]">
           NO {Math.round(market.noPrice * 100)}¢
         </div>
       </div>

@@ -79,7 +79,7 @@ export function WalletModal({ balance, positions, onClose, onBalanceUpdate, depo
       }}
     >
       <div
-        className="bg-white border border-[#F0F0F0] rounded-[24px] p-9 w-full max-w-[560px] relative"
+        className="bg-white border border-[#F0F0F0] rounded-[16px] md:rounded-[24px] p-5 md:p-9 w-full max-w-[560px] relative"
         style={{ boxShadow: '0 20px 64px rgba(0,0,0,0.12)' }}
       >
         <button

@@ -59,9 +59,9 @@ export function PriceChart({ currentPrice, change }: PriceChartProps) {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4 md:mb-6">
         <div>
-          <div className="text-[80px] font-[900] text-[#FF4C00] leading-none mb-2 tracking-[-3px]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+          <div className="text-[52px] md:text-[64px] lg:text-[80px] font-[900] text-[#FF4C00] leading-none mb-2 tracking-[-2px] md:tracking-[-3px]" style={{ fontVariantNumeric: 'tabular-nums' }}>
             {Math.round(currentPrice * 100)}%
           </div>
           <div className="text-[#6B6B6B] text-[14px] font-[400]">
@@ -71,7 +71,7 @@ export function PriceChart({ currentPrice, change }: PriceChartProps) {
             </span>
           </div>
         </div>
-        <div className="flex flex-col items-end gap-3">
+        <div className="flex md:flex-col items-center md:items-end justify-between md:justify-start gap-3">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-[#16A34A]" />
@@ -82,12 +82,12 @@ export function PriceChart({ currentPrice, change }: PriceChartProps) {
               <span className="text-[#6B6B6B] text-[12px] font-[600]">NO</span>
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-1 md:gap-2">
             {['6H', '1D', '1W', '1M', 'ALL'].map((tf) => (
               <button
                 key={tf}
                 onClick={() => setTimeframe(tf)}
-                className={`px-3 py-1.5 rounded-lg text-[12px] font-[600] transition-all duration-200 border-0 cursor-pointer ${
+                className={`px-2.5 md:px-3 py-1.5 rounded-lg text-[12px] font-[600] transition-all duration-200 border-0 cursor-pointer min-h-[36px] ${
                   timeframe === tf
                     ? 'bg-[#FF4C00] text-white'
                     : 'bg-transparent text-[#6B6B6B] hover:text-[#1D1D1D]'
@@ -100,8 +100,9 @@ export function PriceChart({ currentPrice, change }: PriceChartProps) {
         </div>
       </div>
 
-      <div className="bg-white border border-[#F0F0F0] rounded-[16px] p-6">
-        <ResponsiveContainer width="100%" height={380}>
+      <div className="bg-white border border-[#F0F0F0] rounded-[16px] p-3 md:p-6">
+        <div className="h-[200px] md:h-[280px] lg:h-[380px]">
+        <ResponsiveContainer width="100%" height="100%">
           <LineChart data={historicalData}>
             <defs>
               <linearGradient id="colorYes" x1="0" y1="0" x2="0" y2="1">
@@ -207,6 +208,7 @@ export function PriceChart({ currentPrice, change }: PriceChartProps) {
             />
           </LineChart>
         </ResponsiveContainer>
+        </div>
       </div>
     </div>
   );

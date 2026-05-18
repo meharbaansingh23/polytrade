@@ -200,87 +200,96 @@ export function TransactionHistory({ onBack }: TransactionHistoryProps) {
     }
   };
 
+  const tabs = [
+    { key: 'all', label: 'All' },
+    { key: 'deposits', label: 'Deposits' },
+    { key: 'withdrawals', label: 'Withdrawals' },
+    { key: 'trades', label: 'Trades' },
+    { key: 'payouts', label: 'Payouts' },
+  ];
+
   return (
     <div className="min-h-screen relative z-10">
-      <div className="max-w-[1100px] mx-auto px-8 pt-12 pb-16">
+      <div className="max-w-[1100px] mx-auto px-4 md:px-8 pt-8 md:pt-12 pb-16">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-[#9CA3AF] hover:text-[#0D0D1A] bg-transparent border-0 p-0 cursor-pointer text-[13px] font-[400] transition-colors duration-200 mb-6"
+          className="flex items-center gap-2 text-[#9CA3AF] hover:text-[#0D0D1A] bg-transparent border-0 p-0 cursor-pointer text-[13px] font-[400] transition-colors duration-200 mb-6 min-h-[44px]"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>← Back to Markets</span>
         </button>
 
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-[#0D0D1A] text-[32px] font-[800]">Transaction History</h1>
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-[#E4DFF5] rounded-[10px] hover:border-[#C9C0EC] transition-colors cursor-pointer text-[#6B7280] text-[13px] font-[600]">
+          <h1 className="text-[#0D0D1A] text-[22px] md:text-[32px] font-[800]">Transaction History</h1>
+          <button className="hidden md:flex items-center gap-2 px-4 py-2 bg-white border border-[#E4DFF5] rounded-[10px] hover:border-[#C9C0EC] transition-colors cursor-pointer text-[#6B7280] text-[13px] font-[600]">
             <Download className="w-4 h-4" />
             Export CSV
           </button>
         </div>
 
-        <div className="bg-white border border-[#E4DFF5] rounded-[12px] p-1 inline-flex gap-1 mb-6">
-          {[
-            { key: 'all', label: 'All' },
-            { key: 'deposits', label: 'Deposits' },
-            { key: 'withdrawals', label: 'Withdrawals' },
-            { key: 'trades', label: 'Trades' },
-            { key: 'payouts', label: 'Payouts' },
-          ].map((tab) => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key as any)}
-              className={`px-5 py-2 rounded-[8px] text-[13px] font-[600] transition-all duration-200 border-0 cursor-pointer ${
-                activeTab === tab.key
-                  ? 'bg-[#7C3AED] text-white'
-                  : 'bg-transparent text-[#6B7280]'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* Filter tabs — horizontally scrollable on mobile */}
+        <div className="overflow-x-auto pb-1 mb-6 -mx-4 px-4 md:mx-0 md:px-0">
+          <div className="bg-white border border-[#E4DFF5] rounded-[12px] p-1 inline-flex gap-1 min-w-max">
+            {tabs.map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key as any)}
+                className={`px-4 md:px-5 py-2 rounded-[8px] text-[13px] font-[600] transition-all duration-200 border-0 cursor-pointer min-h-[40px] ${
+                  activeTab === tab.key
+                    ? 'bg-[#7C3AED] text-white'
+                    : 'bg-transparent text-[#6B7280]'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-4 mb-6">
-          <div className="bg-white border border-[#E4DFF5] rounded-[14px] p-5" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-            <div className="text-[#9CA3AF] text-[11px] font-[600] uppercase tracking-[1px] mb-2">
+        {/* Stats grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
+          <div className="bg-white border border-[#E4DFF5] rounded-[14px] p-4 md:p-5" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+            <div className="text-[#9CA3AF] text-[10px] md:text-[11px] font-[600] uppercase tracking-[1px] mb-2">
               Total Deposited
             </div>
-            <div className="text-[#0D0D1A] text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+            <div className="text-[#0D0D1A] text-[18px] md:text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
               $500.00 USDC
             </div>
           </div>
 
-          <div className="bg-white border border-[#E4DFF5] rounded-[14px] p-5" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-            <div className="text-[#9CA3AF] text-[11px] font-[600] uppercase tracking-[1px] mb-2">
+          <div className="bg-white border border-[#E4DFF5] rounded-[14px] p-4 md:p-5" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+            <div className="text-[#9CA3AF] text-[10px] md:text-[11px] font-[600] uppercase tracking-[1px] mb-2">
               Total Withdrawn
             </div>
-            <div className="text-[#0D0D1A] text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+            <div className="text-[#0D0D1A] text-[18px] md:text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
               $250.00 USDC
             </div>
           </div>
 
-          <div className="bg-white border border-[#E4DFF5] rounded-[14px] p-5" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-            <div className="text-[#9CA3AF] text-[11px] font-[600] uppercase tracking-[1px] mb-2">
+          <div className="bg-white border border-[#E4DFF5] rounded-[14px] p-4 md:p-5" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+            <div className="text-[#9CA3AF] text-[10px] md:text-[11px] font-[600] uppercase tracking-[1px] mb-2">
               Total Won
             </div>
-            <div className="text-[#059669] text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+            <div className="text-[#059669] text-[18px] md:text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
               $98.00 USDC
             </div>
           </div>
 
-          <div className="bg-white border border-[#E4DFF5] rounded-[14px] p-5" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-            <div className="text-[#9CA3AF] text-[11px] font-[600] uppercase tracking-[1px] mb-2">
+          <div className="bg-white border border-[#E4DFF5] rounded-[14px] p-4 md:p-5" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+            <div className="text-[#9CA3AF] text-[10px] md:text-[11px] font-[600] uppercase tracking-[1px] mb-2">
               Net P&L
             </div>
-            <div className="text-[#059669] text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+            <div className="text-[#059669] text-[18px] md:text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
               +$87.40 USDC
             </div>
           </div>
         </div>
 
+        {/* Transaction list */}
         <div className="bg-white border border-[#E4DFF5] rounded-[16px] overflow-hidden" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-          <div className="bg-[#F7F5FF] border-b border-[#E4DFF5] px-6 py-3.5 flex items-center gap-4">
+
+          {/* Desktop table header */}
+          <div className="hidden md:flex bg-[#F7F5FF] border-b border-[#E4DFF5] px-6 py-3.5 items-center gap-4">
             <div className="text-[#9CA3AF] text-[11px] font-[700] uppercase tracking-[1px]" style={{ flex: '1.2' }}>Date</div>
             <div className="text-[#9CA3AF] text-[11px] font-[700] uppercase tracking-[1px]" style={{ flex: '0.8' }}>Type</div>
             <div className="text-[#9CA3AF] text-[11px] font-[700] uppercase tracking-[1px]" style={{ flex: '3' }}>Description</div>
@@ -290,60 +299,103 @@ export function TransactionHistory({ onBack }: TransactionHistoryProps) {
           </div>
 
           {filteredTransactions.map((tx) => (
-            <div
-              key={tx.id}
-              className="px-6 py-4 border-b border-[#F3F4F6] last:border-0 flex items-center gap-4 hover:bg-[#F9F8FF] transition-colors group"
-            >
-              <div className="text-[#6B7280] text-[13px] font-[500]" style={{ flex: '1.2' }}>{tx.date}</div>
-              <div style={{ flex: '0.8' }}>
-                <span className={`px-2.5 py-1 rounded-full text-[11px] font-[700] ${getTypeBadge(tx.type)}`}>
-                  {tx.type}
-                </span>
-              </div>
-              <div style={{ flex: '3' }}>
-                <div className="text-[#0D0D1A] text-[14px] font-[600]">{tx.title}</div>
-                <div className="text-[#9CA3AF] text-[12px] font-[400] mt-0.5">{tx.subtitle}</div>
-              </div>
-              <div
-                className={`text-[15px] font-[700] text-right ${tx.amount >= 0 ? 'text-[#059669]' : 'text-[#DC2626]'}`}
-                style={{ flex: '1', fontVariantNumeric: 'tabular-nums' }}
-              >
-                {tx.amount >= 0 ? '+' : ''}${tx.amount.toFixed(2)}
-              </div>
-              <div className="flex justify-center" style={{ flex: '1.2' }}>
-                <span className={`border px-2.5 py-1 rounded-full text-[11px] font-[600] ${getStatusBadge(tx.status)}`}>
-                  {getStatusIcon(tx.status)}{tx.status}
-                </span>
-              </div>
-              <div className="text-right" style={{ flex: '1.5' }}>
-                <button
-                  onClick={() => handleCopyTxId(tx.txId, tx.id)}
-                  className="text-[#9CA3AF] text-[12px] font-[500] font-mono hover:text-[#7C3AED] transition-colors bg-transparent border-0 cursor-pointer flex items-center gap-2 ml-auto"
+            <div key={tx.id} className="border-b border-[#F3F4F6] last:border-0">
+
+              {/* Desktop row */}
+              <div className="hidden md:flex px-6 py-4 items-center gap-4 hover:bg-[#F9F8FF] transition-colors group">
+                <div className="text-[#6B7280] text-[13px] font-[500]" style={{ flex: '1.2' }}>{tx.date}</div>
+                <div style={{ flex: '0.8' }}>
+                  <span className={`px-2.5 py-1 rounded-full text-[11px] font-[700] ${getTypeBadge(tx.type)}`}>
+                    {tx.type}
+                  </span>
+                </div>
+                <div style={{ flex: '3' }}>
+                  <div className="text-[#0D0D1A] text-[14px] font-[600]">{tx.title}</div>
+                  <div className="text-[#9CA3AF] text-[12px] font-[400] mt-0.5">{tx.subtitle}</div>
+                </div>
+                <div
+                  className={`text-[15px] font-[700] text-right ${tx.amount >= 0 ? 'text-[#059669]' : 'text-[#DC2626]'}`}
+                  style={{ flex: '1', fontVariantNumeric: 'tabular-nums' }}
                 >
-                  <span>{truncateTxId(tx.txId)}</span>
-                  {copiedTxId === tx.id ? (
-                    <span className="text-[#7C3AED] text-[11px] font-[600]">Copied!</span>
-                  ) : (
-                    <Copy className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  )}
-                </button>
+                  {tx.amount >= 0 ? '+' : ''}${tx.amount.toFixed(2)}
+                </div>
+                <div className="flex justify-center" style={{ flex: '1.2' }}>
+                  <span className={`border px-2.5 py-1 rounded-full text-[11px] font-[600] ${getStatusBadge(tx.status)}`}>
+                    {getStatusIcon(tx.status)}{tx.status}
+                  </span>
+                </div>
+                <div className="text-right" style={{ flex: '1.5' }}>
+                  <button
+                    onClick={() => handleCopyTxId(tx.txId, tx.id)}
+                    className="text-[#9CA3AF] text-[12px] font-[500] font-mono hover:text-[#7C3AED] transition-colors bg-transparent border-0 cursor-pointer flex items-center gap-2 ml-auto"
+                  >
+                    <span>{truncateTxId(tx.txId)}</span>
+                    {copiedTxId === tx.id ? (
+                      <span className="text-[#7C3AED] text-[11px] font-[600]">Copied!</span>
+                    ) : (
+                      <Copy className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Mobile card */}
+              <div className="md:hidden px-4 py-4">
+                <div className="flex items-start justify-between gap-3 mb-2">
+                  <div>
+                    <div className="text-[#0D0D1A] text-[14px] font-[600]">{tx.title}</div>
+                    <div className="text-[#9CA3AF] text-[12px] font-[400] mt-0.5">{tx.subtitle}</div>
+                  </div>
+                  <span className={`shrink-0 px-2.5 py-1 rounded-full text-[11px] font-[700] ${getTypeBadge(tx.type)}`}>
+                    {tx.type}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div
+                      className={`text-[17px] font-[800] ${tx.amount >= 0 ? 'text-[#059669]' : 'text-[#DC2626]'}`}
+                      style={{ fontVariantNumeric: 'tabular-nums' }}
+                    >
+                      {tx.amount >= 0 ? '+' : ''}${tx.amount.toFixed(2)}
+                    </div>
+                    <span className={`border px-2 py-0.5 rounded-full text-[11px] font-[600] ${getStatusBadge(tx.status)}`}>
+                      {getStatusIcon(tx.status)}{tx.status}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-right">
+                    <span className="text-[#9CA3AF] text-[11px] font-[400]">{tx.date}</span>
+                    <button
+                      onClick={() => handleCopyTxId(tx.txId, tx.id)}
+                      className="flex items-center gap-1 text-[#9CA3AF] hover:text-[#7C3AED] transition-colors bg-transparent border-0 cursor-pointer p-0 min-h-[44px]"
+                    >
+                      <span className="text-[11px] font-[500] font-mono">{truncateTxId(tx.txId)}</span>
+                      {copiedTxId === tx.id ? (
+                        <span className="text-[#7C3AED] text-[11px] font-[600]">✓</span>
+                      ) : (
+                        <Copy className="w-3 h-3" />
+                      )}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="bg-white border-t border-[#E4DFF5] px-6 py-4 flex items-center justify-between mt-0 rounded-b-[16px]">
+        <div className="bg-white border-t border-[#E4DFF5] px-4 md:px-6 py-4 flex items-center justify-between mt-0 rounded-b-[16px]">
           <div className="text-[#9CA3AF] text-[13px] font-[500]">
-            Showing {filteredTransactions.length} of {allTransactions.length} transactions
+            Showing {filteredTransactions.length} of {allTransactions.length}
           </div>
           <div className="flex items-center gap-2">
-            <button className="text-[#6B7280] text-[13px] font-[600] px-3 py-1 bg-transparent border-0 cursor-pointer hover:text-[#0D0D1A]">
+            <button className="text-[#6B7280] text-[13px] font-[600] px-3 py-1 bg-transparent border-0 cursor-pointer hover:text-[#0D0D1A] min-h-[44px]">
               ← Prev
             </button>
             <div className="w-7 h-7 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-[13px] font-[600]">
               1
             </div>
-            <button className="text-[#6B7280] text-[13px] font-[600] px-3 py-1 bg-transparent border-0 cursor-pointer hover:text-[#0D0D1A]">
+            <button className="text-[#6B7280] text-[13px] font-[600] px-3 py-1 bg-transparent border-0 cursor-pointer hover:text-[#0D0D1A] min-h-[44px]">
               Next →
             </button>
           </div>

@@ -143,10 +143,10 @@ export function Profile({ onBack, onViewMarket }: ProfileProps) {
 
   return (
     <div className="min-h-screen relative z-10">
-      <div className="max-w-[1100px] mx-auto px-8 pt-12 pb-16">
+      <div className="max-w-[1100px] mx-auto px-4 md:px-8 pt-8 md:pt-12 pb-16">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-[#9CA3AF] hover:text-[#0D0D1A] bg-transparent border-0 p-0 cursor-pointer text-[13px] font-[400] transition-colors duration-200 mb-6"
+          className="flex items-center gap-2 text-[#9CA3AF] hover:text-[#0D0D1A] bg-transparent border-0 p-0 cursor-pointer text-[13px] font-[400] transition-colors duration-200 mb-6 min-h-[44px]"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>← Back to Markets</span>
@@ -154,17 +154,17 @@ export function Profile({ onBack, onViewMarket }: ProfileProps) {
 
         {/* User Identity Card */}
         <div
-          className="bg-white border border-[#E4DFF5] rounded-[20px] p-8 mb-10"
+          className="bg-white border border-[#E4DFF5] rounded-[20px] p-5 md:p-8 mb-8 md:mb-10"
           style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
         >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <div className="w-16 h-16 rounded-full bg-[#7C3AED] flex items-center justify-center text-white text-[24px] font-[700]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-0">
+            <div className="flex items-center gap-4 md:gap-6">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#7C3AED] flex items-center justify-center text-white text-[20px] md:text-[24px] font-[700] shrink-0">
                 MB
               </div>
               <div>
-                <h1 className="text-[#0D0D1A] text-[22px] font-[800] mb-1">Mehar B.</h1>
-                <p className="text-[#6B7280] text-[14px] font-[400] mb-2">mehar@email.com</p>
+                <h1 className="text-[#0D0D1A] text-[18px] md:text-[22px] font-[800] mb-1">Mehar B.</h1>
+                <p className="text-[#6B7280] text-[13px] md:text-[14px] font-[400] mb-2">mehar@email.com</p>
                 <div className="inline-block px-3 py-1 bg-[#EDE9FE] border border-[#C9C0EC] rounded-full">
                   <span className="text-[#7C3AED] text-[11px] font-[600]">
                     ✦ Member since May 2025
@@ -173,35 +173,35 @@ export function Profile({ onBack, onViewMarket }: ProfileProps) {
               </div>
             </div>
 
-            <div className="flex items-center gap-8">
-              <div className="text-center">
-                <div className="text-[#9CA3AF] text-[11px] font-[600] uppercase tracking-[1px] mb-1">
+            <div className="flex items-center gap-5 md:gap-8">
+              <div className="text-center flex-1 md:flex-none">
+                <div className="text-[#9CA3AF] text-[10px] md:text-[11px] font-[600] uppercase tracking-[1px] mb-1">
                   Total Traded
                 </div>
-                <div className="text-[#0D0D1A] text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                <div className="text-[#0D0D1A] text-[18px] md:text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
                   ${totalTraded.toFixed(2)}
                 </div>
               </div>
 
-              <div className="w-px h-12 bg-[#E4DFF5]" />
+              <div className="w-px h-10 md:h-12 bg-[#E4DFF5]" />
 
-              <div className="text-center">
-                <div className="text-[#9CA3AF] text-[11px] font-[600] uppercase tracking-[1px] mb-1">
+              <div className="text-center flex-1 md:flex-none">
+                <div className="text-[#9CA3AF] text-[10px] md:text-[11px] font-[600] uppercase tracking-[1px] mb-1">
                   Positions Won
                 </div>
-                <div className="text-[#059669] text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                <div className="text-[#059669] text-[18px] md:text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
                   {positionsWon}
                 </div>
               </div>
 
-              <div className="w-px h-12 bg-[#E4DFF5]" />
+              <div className="w-px h-10 md:h-12 bg-[#E4DFF5]" />
 
-              <div className="text-center">
-                <div className="text-[#9CA3AF] text-[11px] font-[600] uppercase tracking-[1px] mb-1">
+              <div className="text-center flex-1 md:flex-none">
+                <div className="text-[#9CA3AF] text-[10px] md:text-[11px] font-[600] uppercase tracking-[1px] mb-1">
                   P&L
                 </div>
                 <div
-                  className={`text-[22px] font-[800] ${totalPnL >= 0 ? 'text-[#059669]' : 'text-[#DC2626]'}`}
+                  className={`text-[18px] md:text-[22px] font-[800] ${totalPnL >= 0 ? 'text-[#059669]' : 'text-[#DC2626]'}`}
                   style={{ fontVariantNumeric: 'tabular-nums' }}
                 >
                   {totalPnL >= 0 ? '+' : ''}${totalPnL.toFixed(2)}
@@ -212,13 +212,13 @@ export function Profile({ onBack, onViewMarket }: ProfileProps) {
         </div>
 
         {/* My Positions Section */}
-        <div className="flex items-center justify-between mb-1">
-          <h2 className="text-[#0D0D1A] text-[24px] font-[800]">My Positions</h2>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-1">
+          <h2 className="text-[#0D0D1A] text-[20px] md:text-[24px] font-[800]">My Positions</h2>
 
-          <div className="bg-white border border-[#E4DFF5] rounded-full p-1">
+          <div className="flex w-full md:w-auto bg-white border border-[#E4DFF5] rounded-full p-1">
             <button
               onClick={() => setActiveTab('active')}
-              className={`px-5 py-2 rounded-full transition-all duration-200 border-0 cursor-pointer text-[13px] ${
+              className={`flex-1 md:flex-none px-5 py-2 rounded-full transition-all duration-200 border-0 cursor-pointer text-[13px] min-h-[44px] md:min-h-0 ${
                 activeTab === 'active'
                   ? 'bg-[#7C3AED] text-white font-[600] shadow-[0_2px_8px_rgba(124,58,237,0.25)]'
                   : 'bg-transparent text-[#6B7280] font-[500]'
@@ -228,7 +228,7 @@ export function Profile({ onBack, onViewMarket }: ProfileProps) {
             </button>
             <button
               onClick={() => setActiveTab('settled')}
-              className={`px-5 py-2 rounded-full transition-all duration-200 border-0 cursor-pointer text-[13px] ${
+              className={`flex-1 md:flex-none px-5 py-2 rounded-full transition-all duration-200 border-0 cursor-pointer text-[13px] min-h-[44px] md:min-h-0 ${
                 activeTab === 'settled'
                   ? 'bg-[#7C3AED] text-white font-[600] shadow-[0_2px_8px_rgba(124,58,237,0.25)]'
                   : 'bg-transparent text-[#6B7280] font-[500]'
@@ -250,7 +250,7 @@ export function Profile({ onBack, onViewMarket }: ProfileProps) {
           {positions.map((position) => (
             <div
               key={position.id}
-              className="bg-white border border-[#E4DFF5] rounded-[14px] p-6 hover:border-[#C9C0EC] transition-all duration-200"
+              className="bg-white border border-[#E4DFF5] rounded-[14px] p-4 md:p-6 hover:border-[#C9C0EC] transition-all duration-200"
               style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.boxShadow = '0 4px 16px rgba(124, 58, 237, 0.08)';
@@ -259,7 +259,105 @@ export function Profile({ onBack, onViewMarket }: ProfileProps) {
                 e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)';
               }}
             >
-              <div className="flex items-center gap-4">
+              {/* Mobile layout */}
+              <div className="md:hidden">
+                <div className="flex items-start justify-between gap-3 mb-2">
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[#9CA3AF] text-[10px] font-[700] uppercase tracking-[1px] mb-1">
+                      {position.category}
+                    </div>
+                    <div className="text-[#0D0D1A] text-[14px] font-[600] leading-snug mb-1">
+                      {position.question}
+                    </div>
+                    <div className="text-[#9CA3AF] text-[12px] font-[400]">
+                      Resolves {position.resolvesDate}
+                    </div>
+                  </div>
+                  <div className="shrink-0">
+                    <div
+                      className={`px-3 py-1.5 rounded-full text-[13px] font-[700] ${
+                        position.side === 'YES'
+                          ? 'bg-[#ECFDF5] border border-[#6EE7B7] text-[#059669]'
+                          : 'bg-[#FEF2F2] border border-[#FCA5A5] text-[#DC2626]'
+                      }`}
+                    >
+                      {position.side}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-end justify-between pt-3 border-t border-[#F3F4F6]">
+                  <div>
+                    <div className="text-[#9CA3AF] text-[11px] font-[500] mb-0.5">
+                      {position.shares} shares @ {Math.round(position.pricePerShare * 100)}¢
+                    </div>
+                    <div className="text-[#0D0D1A] text-[15px] font-[700]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                      Cost ${position.cost.toFixed(2)}
+                    </div>
+                  </div>
+
+                  {activeTab === 'active' ? (
+                    <div className="text-right">
+                      <div
+                        className={`text-[15px] font-[700] ${
+                          position.profit! >= 0 ? 'text-[#059669]' : 'text-[#DC2626]'
+                        }`}
+                        style={{ fontVariantNumeric: 'tabular-nums' }}
+                      >
+                        ${position.currentValue!.toFixed(2)}
+                      </div>
+                      <div
+                        className={`text-[12px] font-[500] mb-1 ${
+                          position.profit! >= 0 ? 'text-[#059669]' : 'text-[#DC2626]'
+                        }`}
+                        style={{ fontVariantNumeric: 'tabular-nums' }}
+                      >
+                        {position.profit! >= 0 ? '+' : ''}${position.profit!.toFixed(2)} ({((position.profit! / position.cost) * 100).toFixed(0)}%)
+                      </div>
+                      <button
+                        onClick={() => onViewMarket(position.id)}
+                        className="text-[#7C3AED] text-[13px] font-[600] bg-transparent border-0 cursor-pointer hover:underline"
+                      >
+                        View Market →
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="text-right">
+                      <div
+                        className={`inline-block px-3 py-1.5 rounded-full text-[12px] font-[700] mb-1 ${
+                          position.outcome === 'WON'
+                            ? 'bg-[#ECFDF5] border border-[#6EE7B7] text-[#059669]'
+                            : 'bg-[#FEF2F2] border border-[#FCA5A5] text-[#DC2626]'
+                        }`}
+                      >
+                        {position.outcome === 'WON' ? '✓ WON' : '✗ LOST'}
+                      </div>
+                      {position.outcome === 'WON' ? (
+                        <>
+                          <div className="text-[#059669] text-[15px] font-[700]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                            ${position.payout!.toFixed(2)} USDC
+                          </div>
+                          <div className="text-[#059669] text-[12px] font-[500]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                            +${position.profit!.toFixed(2)} profit
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="text-[#DC2626] text-[15px] font-[700]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                            $0.00
+                          </div>
+                          <div className="text-[#DC2626] text-[12px] font-[500]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                            ${Math.abs(position.profit!).toFixed(2)} lost
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Desktop layout */}
+              <div className="hidden md:flex md:items-center md:gap-4">
                 {/* Column 1 - Market */}
                 <div className="flex-1">
                   <div className="text-[#9CA3AF] text-[10px] font-[700] uppercase tracking-[1px] mb-1">
@@ -388,36 +486,36 @@ export function Profile({ onBack, onViewMarket }: ProfileProps) {
 
         {/* Bottom Summary Bar */}
         <div
-          className="bg-white border border-[#E4DFF5] rounded-[16px] p-6"
+          className="bg-white border border-[#E4DFF5] rounded-[16px] p-4 md:p-6"
           style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
         >
           <div className="flex items-center justify-between">
             <div className="text-center flex-1">
-              <div className="text-[#9CA3AF] text-[11px] font-[600] uppercase tracking-[1px] mb-1">
+              <div className="text-[#9CA3AF] text-[10px] md:text-[11px] font-[600] uppercase tracking-[1px] mb-1">
                 Active Positions
               </div>
-              <div className="text-[#0D0D1A] text-[18px] font-[700]">{activeCount} open</div>
+              <div className="text-[#0D0D1A] text-[16px] md:text-[18px] font-[700]">{activeCount} open</div>
             </div>
 
-            <div className="w-px h-12 bg-[#E4DFF5]" />
+            <div className="w-px h-10 md:h-12 bg-[#E4DFF5]" />
 
             <div className="text-center flex-1">
-              <div className="text-[#9CA3AF] text-[11px] font-[600] uppercase tracking-[1px] mb-1">
+              <div className="text-[#9CA3AF] text-[10px] md:text-[11px] font-[600] uppercase tracking-[1px] mb-1">
                 Total Invested
               </div>
-              <div className="text-[#0D0D1A] text-[18px] font-[700]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                ${totalInvested.toFixed(2)} USDC
+              <div className="text-[#0D0D1A] text-[16px] md:text-[18px] font-[700]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                ${totalInvested.toFixed(2)}
               </div>
             </div>
 
-            <div className="w-px h-12 bg-[#E4DFF5]" />
+            <div className="w-px h-10 md:h-12 bg-[#E4DFF5]" />
 
             <div className="text-center flex-1">
-              <div className="text-[#9CA3AF] text-[11px] font-[600] uppercase tracking-[1px] mb-1">
-                Total Won (All time)
+              <div className="text-[#9CA3AF] text-[10px] md:text-[11px] font-[600] uppercase tracking-[1px] mb-1">
+                Total Won
               </div>
-              <div className="text-[#059669] text-[18px] font-[700]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                ${totalWonAllTime.toFixed(2)} USDC
+              <div className="text-[#059669] text-[16px] md:text-[18px] font-[700]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                ${totalWonAllTime.toFixed(2)}
               </div>
             </div>
           </div>
