@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { X, Check } from 'lucide-react';
+import { supabase } from '../../lib/supabase';
 
 interface WaitlistModalProps {
   onClose: () => void;
@@ -12,12 +13,31 @@ interface WaitlistModalProps {
 export function WaitlistModal({ onClose, tradeContext }: WaitlistModalProps) {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [inlineError, setInlineError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+
+    setLoading(true);
+    setInlineError(null);
+
+    const source = tradeContext ? tradeContext.marketQuestion : 'header';
+
+    const { error } = await supabase
+      .from('waitlist')
+      .insert({ email, source });
+
+    if (!error) {
       setSubmitted(true);
+    } else if (error.message.toLowerCase().includes('duplicate')) {
+      setInlineError("You're already on the list!");
+    } else {
+      setInlineError('Something went wrong, try again');
     }
+
+    setLoading(false);
   };
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -145,7 +165,8 @@ export function WaitlistModal({ onClose, tradeContext }: WaitlistModalProps) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full md:flex-1 h-12 bg-[#FAFAFA] border-[1.5px] border-[#F0F0F0] rounded-[8px] px-4 text-[#1D1D1D] text-[14px] focus:outline-none focus:border-[#FF4C00] transition-all"
+                    disabled={loading}
+                    className="w-full md:flex-1 h-12 bg-[#FAFAFA] border-[1.5px] border-[#F0F0F0] rounded-[8px] px-4 text-[#1D1D1D] text-[14px] focus:outline-none focus:border-[#FF4C00] transition-all disabled:opacity-60"
                     style={{
                       boxShadow: 'none',
                     }}
@@ -158,15 +179,22 @@ export function WaitlistModal({ onClose, tradeContext }: WaitlistModalProps) {
                   />
                   <button
                     type="submit"
-                    className="w-full md:w-auto md:shrink-0 h-12 bg-[#FF4C00] text-white px-6 rounded-[8px] border-0 cursor-pointer hover:bg-[#E64400] transition-colors text-[14px]"
+                    disabled={loading}
+                    className="w-full md:w-auto md:shrink-0 h-12 bg-[#FF4C00] text-white px-6 rounded-[8px] border-0 cursor-pointer hover:bg-[#E64400] transition-colors text-[14px] disabled:opacity-70 disabled:cursor-not-allowed"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700 }}
                   >
-                    {tradeContext ? 'Notify Me When Live' : 'Join Waitlist'}
+                    {loading ? 'Joining...' : tradeContext ? 'Notify Me When Live' : 'Join Waitlist'}
                   </button>
                 </div>
-                <p className="text-[#B0B0B0] text-[12px] text-center">
-                  No spam. We'll only email you about the launch.
-                </p>
+                {inlineError ? (
+                  <p className="text-[13px] text-center font-[500]" style={{ color: inlineError.includes('already') ? '#FF4C00' : '#DC2626' }}>
+                    {inlineError}
+                  </p>
+                ) : (
+                  <p className="text-[#B0B0B0] text-[12px] text-center">
+                    No spam. We'll only email you about the launch.
+                  </p>
+                )}
               </form>
 
               <div className="flex items-center gap-3 w-full my-5">
