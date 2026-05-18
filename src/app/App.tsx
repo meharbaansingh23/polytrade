@@ -341,7 +341,7 @@ export default function App() {
           <div className="pt-[68px] md:pt-24 pb-10 md:pb-14">
             <div className="max-w-[840px] mx-auto text-center px-4 md:px-8">
               <div className="inline-block px-3.5 py-1.5 bg-[#FFF0EB] border border-[#FFD4C2] rounded-full mb-5">
-                <span className="text-[12px] font-[600] text-[#FF4C00]">✦ CONVICTION MARKETS · LIVE NOW</span>
+                <span className="text-[12px] font-[600] text-[#FF4C00]">✦ PREDICTION MARKETS · LIVE NOW</span>
               </div>
               <h1 className="text-[#1D1D1D] text-[36px] md:text-[52px] lg:text-[64px] tracking-[-1px] md:tracking-[-2px] lg:tracking-[-3px] leading-[1.1] mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700 }}>
                 Your local knowledge.
