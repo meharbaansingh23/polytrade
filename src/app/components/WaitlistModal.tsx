@@ -25,16 +25,22 @@ export function WaitlistModal({ onClose, tradeContext }: WaitlistModalProps) {
 
     const source = tradeContext ? tradeContext.marketQuestion : 'header';
 
+    // RLS must be DISABLED on the waitlist table in Supabase for anon inserts to work.
+    // Table → Authentication → Policies → disable RLS, or add an INSERT policy for anon role.
     const { error } = await supabase
       .from('waitlist')
       .insert({ email, source });
 
     if (!error) {
       setSubmitted(true);
-    } else if (error.message.toLowerCase().includes('duplicate')) {
-      setInlineError("You're already on the list!");
     } else {
-      setInlineError('Something went wrong, try again');
+      console.log('Supabase error:', error);
+      console.log('Supabase URL:', import.meta.env.VITE_SUPABASE_URL);
+      if (error.message.toLowerCase().includes('duplicate') || error.code === '23505') {
+        setInlineError("You're already on the list!");
+      } else {
+        setInlineError('Something went wrong, try again');
+      }
     }
 
     setLoading(false);
