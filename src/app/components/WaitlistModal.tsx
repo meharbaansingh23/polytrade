@@ -116,10 +116,7 @@ export function WaitlistModal({ onClose, tradeContext }: WaitlistModalProps) {
               <div
                 className="w-14 h-14 rounded-[14px] bg-[#FFF0EB] flex items-center justify-center mb-4"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M6 12L12 6L18 12L12 18L6 12Z" fill="#FF4C00" />
-                  <path d="M9 12L12 9L15 12L12 15L9 12Z" fill="#FF824F" />
-                </svg>
+                <img src="/polytrade_favicon.svg" alt="" width="48" height="48" />
               </div>
 
               <div
@@ -143,7 +140,7 @@ export function WaitlistModal({ onClose, tradeContext }: WaitlistModalProps) {
               <p className="text-[#6B6B6B] text-[14px] leading-[1.65] mb-6">
                 {tradeContext
                   ? "Polytrade isn't live yet — but you clearly have good instincts. Join the waitlist and be first to place this trade when we launch."
-                  : "We're launching hyperlocal prediction markets across Africa and the Philippines. Join the waitlist and get early access + 10 USDC trading credit when we go live."}
+                  : "We're launching hyperlocal prediction markets across Africa and the Philippines. Join the waitlist and get early access when we go live."}
               </p>
 
               {tradeContext && (
@@ -255,15 +252,15 @@ export function WaitlistModal({ onClose, tradeContext }: WaitlistModalProps) {
             </h2>
 
             <p className="text-[#6B6B6B] text-[14px] leading-[1.65] mb-6 max-w-[340px]">
-              We'll email you at <span className="font-[600]">{email}</span> when Polytrade goes
-              live. You'll get 10 USDC trading credit on us.
+              We'll email you at <span className="font-[600]">{email}</span> when Polytrade goes live.
             </p>
 
             <button
               onClick={onClose}
-              className="text-[#B0B0B0] text-[13px] bg-transparent border-0 cursor-pointer hover:text-[#6B6B6B] transition-colors underline"
+              className="w-full h-12 bg-[#FF4C00] text-white rounded-[8px] border-0 cursor-pointer hover:bg-[#E64400] transition-colors text-[14px]"
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600 }}
             >
-              Close
+              Go to Home
             </button>
           </div>
         )}
