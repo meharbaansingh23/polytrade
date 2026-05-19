@@ -73,7 +73,7 @@ export function MarketDetail({ market, onBack, onWaitlistClick }: MarketDetailPr
                 {showAbout && (
                   <div className="px-5 pb-5 text-[#6B6B6B] text-[14px] font-[400] leading-[1.6]">
                     This market tracks whether the specified event will occur before the resolution
-                    date. Shares pay out $1.00 USDC if the outcome matches your position.
+                    date. Shares pay out $1.00 USDT if the outcome matches your position.
                   </div>
                 )}
               </div>
@@ -163,7 +163,7 @@ export function MarketDetail({ market, onBack, onWaitlistClick }: MarketDetailPr
                     Payout if {selectedSide === 'YES' ? 'YES' : 'NO'} wins
                   </span>
                   <span className="text-[#16A34A] text-[20px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                    ${payout.toFixed(2)} USDC
+                    ${payout.toFixed(2)} USDT
                   </span>
                 </div>
               </div>

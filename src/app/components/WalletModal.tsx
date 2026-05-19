@@ -95,7 +95,7 @@ export function WalletModal({ balance, positions, onClose, onBalanceUpdate, depo
 
             <div className="text-center mb-5">
               <div className="text-[36px] font-[900] text-[#FF4C00] mb-1" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                ${balance.toFixed(2)} USDC
+                ${balance.toFixed(2)} USDT
               </div>
             </div>
 
@@ -175,7 +175,7 @@ export function WalletModal({ balance, positions, onClose, onBalanceUpdate, depo
               Back
             </button>
 
-            <h2 className="text-[#1D1D1D] mb-5 text-[22px] font-[800]">Deposit USDC or USDT</h2>
+            <h2 className="text-[#1D1D1D] mb-5 text-[22px] font-[800]">Deposit USDT</h2>
 
             <div className="mb-6">
               <p className="text-[#6B6B6B] text-[11px] font-[700] uppercase tracking-[1px] mb-3">
@@ -263,7 +263,7 @@ export function WalletModal({ balance, positions, onClose, onBalanceUpdate, depo
                 <div className="flex items-center justify-between py-2.5 border-b border-[#F3F4F6]">
                   <span className="text-[#6B6B6B] text-[14px] font-[400]">Amount</span>
                   <span className="text-[#1D1D1D] text-[15px] font-[700]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                    ${depositAmountValue}.00 USDC
+                    ${depositAmountValue}.00 USDT
                   </span>
                 </div>
 
@@ -293,7 +293,7 @@ export function WalletModal({ balance, positions, onClose, onBalanceUpdate, depo
               <div>
                 <div className="text-[#FF4C00] text-[13px] font-[700] mb-1">What happens next?</div>
                 <div className="text-[#6B6B6B] text-[13px] font-[400] leading-[1.5]">
-                  Our team reviews your transaction on-chain. Once confirmed, your USDC balance updates automatically. This usually takes under 2 hours.
+                  Our team reviews your transaction on-chain. Once confirmed, your USDT balance updates automatically. This usually takes under 2 hours.
                 </div>
               </div>
             </div>
@@ -331,14 +331,14 @@ export function WalletModal({ balance, positions, onClose, onBalanceUpdate, depo
 
             <h2 className="text-[#1D1D1D] mb-1 text-[22px] font-[800]">Withdraw Funds</h2>
             <p className="text-[#6B6B6B] text-[14px] font-[400] mb-5">
-              Withdraw USDC or USDT to your external wallet
+              Withdraw USDT to your external wallet
             </p>
 
             <div className="bg-[#FAFAFA] border border-[#F0F0F0] rounded-[12px] p-4 mb-4 flex items-center justify-between">
               <div>
                 <div className="text-[#6B6B6B] text-[12px] font-[500] mb-1">Available balance</div>
                 <div className="text-[#1D1D1D] text-[20px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                  ${balance.toFixed(2)} USDC
+                  ${balance.toFixed(2)} USDT
                 </div>
               </div>
               <button
@@ -396,7 +396,7 @@ export function WalletModal({ balance, positions, onClose, onBalanceUpdate, depo
 
             <div className="mb-3">
               <label className="text-[#6B6B6B] text-[12px] font-[600] uppercase tracking-[1px] block mb-2">
-                Your wallet address (USDC/USDT)
+                Your wallet address (USDT/USDT)
               </label>
               <div className="bg-[#FAFAFA] border border-[#F0F0F0] rounded-[12px] px-4 py-3 flex items-center gap-2 focus-within:border-[#FF4C00] focus-within:bg-white transition-all">
                 <input
@@ -476,7 +476,7 @@ export function WalletModal({ balance, positions, onClose, onBalanceUpdate, depo
                 <div className="flex items-center justify-between py-3 border-b border-[#F0F0F0]">
                   <span className="text-[#6B6B6B] text-[14px] font-[400]">Amount</span>
                   <span className="text-[#1D1D1D] text-[14px] font-[700]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                    ${parseFloat(withdrawAmount).toFixed(2)} USDC
+                    ${parseFloat(withdrawAmount).toFixed(2)} USDT
                   </span>
                 </div>
 
@@ -498,7 +498,7 @@ export function WalletModal({ balance, positions, onClose, onBalanceUpdate, depo
                 <div className="flex items-center justify-between py-3">
                   <span className="text-[#6B6B6B] text-[14px] font-[400]">You receive</span>
                   <span className="text-[#FF4C00] text-[17px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                    ${parseFloat(withdrawAmount).toFixed(2)} USDC
+                    ${parseFloat(withdrawAmount).toFixed(2)} USDT
                   </span>
                 </div>
               </div>
@@ -538,7 +538,7 @@ export function WalletModal({ balance, positions, onClose, onBalanceUpdate, depo
             <h2 className="text-[#1D1D1D] text-[24px] font-[800] mb-3">Withdrawal Submitted</h2>
 
             <p className="text-[#6B6B6B] text-[14px] font-[400] leading-[1.6] max-w-[320px] mx-auto mb-5">
-              Your ${parseFloat(withdrawAmount).toFixed(2)} USDC withdrawal has been submitted and will be
+              Your ${parseFloat(withdrawAmount).toFixed(2)} USDT withdrawal has been submitted and will be
               processed within 4 hours.
             </p>
 
@@ -556,7 +556,7 @@ export function WalletModal({ balance, positions, onClose, onBalanceUpdate, depo
                 New balance
               </div>
               <div className="text-[#1D1D1D] text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                ${newBalance.toFixed(2)} USDC
+                ${newBalance.toFixed(2)} USDT
               </div>
             </div>
 

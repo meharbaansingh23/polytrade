@@ -335,7 +335,7 @@ export function Profile({ onBack, onViewMarket }: ProfileProps) {
                       {position.outcome === 'WON' ? (
                         <>
                           <div className="text-[#059669] text-[15px] font-[700]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                            ${position.payout!.toFixed(2)} USDC
+                            ${position.payout!.toFixed(2)} USDT
                           </div>
                           <div className="text-[#059669] text-[12px] font-[500]" style={{ fontVariantNumeric: 'tabular-nums' }}>
                             +${position.profit!.toFixed(2)} profit
@@ -458,7 +458,7 @@ export function Profile({ onBack, onViewMarket }: ProfileProps) {
                           Paid out
                         </div>
                         <div className="text-[#059669] text-[16px] font-[700]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                          ${position.payout!.toFixed(2)} USDC
+                          ${position.payout!.toFixed(2)} USDT
                         </div>
                         <div className="text-[#059669] text-[12px] font-[500]" style={{ fontVariantNumeric: 'tabular-nums' }}>
                           +${position.profit!.toFixed(2)} profit

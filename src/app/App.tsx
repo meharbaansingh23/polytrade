@@ -364,7 +364,7 @@ export default function App() {
                 </span>
               </h1>
               <p className="text-[16px] font-[400] text-[#6B6B6B] max-w-[480px] mx-auto leading-[1.6]">
-                Trade YES or NO on real events in your city. Win USDC if you're right.
+                Trade YES or NO on real events in your city. Win USDT if you're right.
               </p>
             </div>
           </div>

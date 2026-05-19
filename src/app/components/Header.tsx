@@ -49,7 +49,7 @@ export function Header({
             <span className="text-[15px] md:text-[17px] font-[800] text-[#1D1D1D]" style={{ fontVariantNumeric: 'tabular-nums' }}>
               ${balance.toFixed(2)}
             </span>
-            <span className="text-[12px] font-[600] text-[#FF4C00]">USDC</span>
+            <span className="text-[12px] font-[600] text-[#FF4C00]">USDT</span>
             <ChevronDown className="w-4 h-4 text-[#6B6B6B] md:ml-1.5" />
           </button>
 

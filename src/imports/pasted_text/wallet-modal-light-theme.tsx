@@ -4,7 +4,7 @@ The wallet modal is currently rendering in dark theme. Fix it to match the light
 WALLET MODAL — LIGHT THEME FIX
 Modal container: bg #FFFFFF, border 1px #E4DFF5, border-radius 24px, padding 36px, box-shadow 0 20px 64px rgba(0,0,0,0.12). Backdrop overlay: rgba(13,13,26,0.4) with blur.
 "Your Wallet" title: Inter Tight 22px weight 800, color #0D0D1A
-Balance "$124.50 USDC": Inter Tight 36px weight 900, color #7C3AED
+Balance "$124.50 USDT": Inter Tight 36px weight 900, color #7C3AED
 Two buttons side by side:
 
 "Deposit +" — bg #7C3AED, text #FFFFFF, Inter Tight 14px weight 600, border-radius 10px, 44px height, flex 1, box-shadow 0 2px 8px rgba(124,58,237,0.3)
@@ -27,10 +27,10 @@ WITHDRAW FLOW — 3 STATES
 When "Withdraw" button is clicked, the modal content transitions to the withdraw flow. Back arrow top-left returns to main wallet view.
 STATE 1 — Withdraw Entry
 Title: "Withdraw Funds" Inter Tight 22px weight 800 #0D0D1A
-Subtitle: "Withdraw USDC or USDT to your external wallet" Inter Tight 14px #6B7280, margin-top 4px
+Subtitle: "Withdraw USDT or USDT to your external wallet" Inter Tight 14px #6B7280, margin-top 4px
 Available balance row: bg #F7F5FF, border 1px #E4DFF5, border-radius 12px, padding 16px, margin-top 20px, flex space-between:
 
-Left: "Available balance" — Inter Tight 12px weight 500 #9CA3AF, above "$124.50 USDC" Inter Tight 20px weight 800 #0D0D1A
+Left: "Available balance" — Inter Tight 12px weight 500 #9CA3AF, above "$124.50 USDT" Inter Tight 20px weight 800 #0D0D1A
 Right: "Max" button — bg #EDE9FE, text #7C3AED, Inter Tight 12px weight 600, padding 6px 12px, border-radius 6px, cursor pointer
 
 Amount input (margin-top 16px):
@@ -49,7 +49,7 @@ Selected: bg #7C3AED, text #FFFFFF, box-shadow 0 2px 8px rgba(124,58,237,0.25)
 
 Wallet address input (margin-top 20px):
 
-Label: "Your wallet address (USDC/USDT)" same label style
+Label: "Your wallet address (USDT/USDT)" same label style
 Input box: same style as amount input, height 48px
 Placeholder: "0x... or wallet address" Inter Tight 14px #9CA3AF
 Paste button inside right: bg #EDE9FE, text #7C3AED, 28px height, border-radius 6px, "Paste" text Inter Tight 12px weight 600
@@ -74,11 +74,11 @@ Summary card: bg #F7F5FF, border 1px #E4DFF5, border-radius 16px, padding 24px, 
 
 Each row flex space-between, border-bottom 1px #E4DFF5 except last, padding 12px 0:
 
-"Amount" · "$50.00 USDC" (weight 700 #0D0D1A)
+"Amount" · "$50.00 USDT" (weight 700 #0D0D1A)
 "Network" · "Polygon" (weight 600 #0D0D1A)
 "To address" · "0x742d...3F4A" (Inter Tight 13px monospace weight 600 #0D0D1A, truncated middle)
 "Fee" · "No fee" (weight 600, color #059669)
-"You receive" · "$50.00 USDC" (Inter Tight 17px weight 800, color #7C3AED — larger, prominent)
+"You receive" · "$50.00 USDT" (Inter Tight 17px weight 800, color #7C3AED — larger, prominent)
 
 
 
@@ -94,7 +94,7 @@ Same modal size. No back arrow.
 Center-aligned content vertically in modal:
 Success icon: 72px circle, bg #ECFDF5, border 2px #6EE7B7, centered. Inside: checkmark ✓ in #059669, 32px.
 "Withdrawal Submitted" Inter Tight 24px weight 800 #0D0D1A, centered, margin-top 20px
-"Your $50.00 USDC withdrawal has been submitted and will be processed within 4 hours." Inter Tight 14px weight 400 #6B7280, centered, max-width 320px, line-height 1.6
+"Your $50.00 USDT withdrawal has been submitted and will be processed within 4 hours." Inter Tight 14px weight 400 #6B7280, centered, max-width 320px, line-height 1.6
 Details pill row (margin-top 20px, centered):
 
 "Polygon Network" pill: bg #F0EDFF, border 1px #C9C0EC, text #7C3AED, Inter Tight 12px weight 600, padding 6px 14px, border-radius 100px
@@ -103,7 +103,7 @@ Details pill row (margin-top 20px, centered):
 Updated balance (margin-top 24px): bg #F7F5FF, border 1px #E4DFF5, border-radius 12px, padding 16px, centered:
 
 "New balance" Inter Tight 11px weight 600 #9CA3AF uppercase
-"$74.50 USDC" Inter Tight 22px weight 800 #0D0D1A
+"$74.50 USDT" Inter Tight 22px weight 800 #0D0D1A
 
 "Back to Markets" button: full width, 52px, bg #7C3AED, text white, Inter Tight 15px weight 700, border-radius 12px, shadow, margin-top 24px
 

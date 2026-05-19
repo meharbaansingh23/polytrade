@@ -66,7 +66,7 @@ export function BuyConfirmationModal({
           <div className="flex justify-between items-center py-3 border-t border-[#F0F0F0]">
             <span className="text-[#6B6B6B] text-[14px] font-[400]">Amount</span>
             <span className="text-[#1D1D1D] text-[14px] font-[600]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-              ${amount.toFixed(2)} USDC
+              ${amount.toFixed(2)} USDT
             </span>
           </div>
 
@@ -95,7 +95,7 @@ export function BuyConfirmationModal({
         <div className="text-center mb-6">
           <p className="text-[14px] font-[400] text-[#6B6B6B] m-0">
             Balance after: <span className="text-[#1D1D1D] font-[600]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-              ${balanceAfter.toFixed(2)} USDC
+              ${balanceAfter.toFixed(2)} USDT
             </span>
           </p>
         </div>

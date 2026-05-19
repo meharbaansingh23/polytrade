@@ -17,7 +17,7 @@ const allTransactions: Transaction[] = [
     id: '1',
     date: 'May 11, 2025',
     type: 'DEPOSIT',
-    title: 'USDC Deposit via Polygon',
+    title: 'USDT Deposit via Polygon',
     subtitle: 'Wallet 0x742d...3F4A',
     amount: 100.0,
     status: 'Confirmed',
@@ -67,7 +67,7 @@ const allTransactions: Transaction[] = [
     id: '6',
     date: 'May 7, 2025',
     type: 'WITHDRAWAL',
-    title: 'USDC Withdrawal to Polygon',
+    title: 'USDT Withdrawal to Polygon',
     subtitle: 'Wallet 0xA3f1...9B2C',
     amount: -50.0,
     status: 'Confirmed',
@@ -97,7 +97,7 @@ const allTransactions: Transaction[] = [
     id: '9',
     date: 'Apr 28, 2025',
     type: 'DEPOSIT',
-    title: 'USDC Deposit via Polygon',
+    title: 'USDT Deposit via Polygon',
     subtitle: 'Wallet 0x742d...3F4A',
     amount: 200.0,
     status: 'Confirmed',
@@ -127,7 +127,7 @@ const allTransactions: Transaction[] = [
     id: '12',
     date: 'Apr 10, 2025',
     type: 'WITHDRAWAL',
-    title: 'USDC Withdrawal to Polygon',
+    title: 'USDT Withdrawal to Polygon',
     subtitle: 'Wallet 0xA3f1...9B2C',
     amount: -100.0,
     status: 'Failed',
@@ -253,7 +253,7 @@ export function TransactionHistory({ onBack }: TransactionHistoryProps) {
               Total Deposited
             </div>
             <div className="text-[#0D0D1A] text-[18px] md:text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-              $500.00 USDC
+              $500.00 USDT
             </div>
           </div>
 
@@ -262,7 +262,7 @@ export function TransactionHistory({ onBack }: TransactionHistoryProps) {
               Total Withdrawn
             </div>
             <div className="text-[#0D0D1A] text-[18px] md:text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-              $250.00 USDC
+              $250.00 USDT
             </div>
           </div>
 
@@ -271,7 +271,7 @@ export function TransactionHistory({ onBack }: TransactionHistoryProps) {
               Total Won
             </div>
             <div className="text-[#059669] text-[18px] md:text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-              $98.00 USDC
+              $98.00 USDT
             </div>
           </div>
 
@@ -280,7 +280,7 @@ export function TransactionHistory({ onBack }: TransactionHistoryProps) {
               Net P&L
             </div>
             <div className="text-[#059669] text-[18px] md:text-[22px] font-[800]" style={{ fontVariantNumeric: 'tabular-nums' }}>
-              +$87.40 USDC
+              +$87.40 USDT
             </div>
           </div>
         </div>

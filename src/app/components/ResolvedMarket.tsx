@@ -70,7 +70,7 @@ export function ResolvedMarket({ market, userPosition, onBack }: ResolvedMarketP
                   <p className="text-[#00D4AA] mb-2">🎉 Congratulations!</p>
                   <p className="text-white m-0">
                     You held {userPosition.shares} {userPosition.side} shares → Paid out $
-                    {payout.toFixed(2)} USDC (after 2% fee)
+                    {payout.toFixed(2)} USDT (after 2% fee)
                   </p>
                 </>
               ) : (
