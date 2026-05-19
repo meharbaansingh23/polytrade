@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router';
 import { PublicHeader } from '../components/PublicHeader';
 import { supabase } from '../../lib/supabase';
+import '../components/RichTextEditor.css';
 
 interface BlogPostType {
   id: string;
@@ -99,7 +100,7 @@ export default function BlogPost() {
 
             {post.body && (
               <div
-                className="text-[#1D1D1D] text-[16px] leading-[1.8] space-y-4"
+                className="blog-content"
                 dangerouslySetInnerHTML={{ __html: post.body }}
               />
             )}

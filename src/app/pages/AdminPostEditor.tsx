@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { supabase } from '../../lib/supabase';
+import { RichTextEditor } from '../components/RichTextEditor';
 
 function generateSlug(title: string) {
   return title
@@ -14,13 +15,16 @@ function generateSlug(title: string) {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="block text-[#6B6B6B] text-[11px] font-[700] uppercase tracking-[1px] mb-1.5">{label}</label>
+      <label className="block text-[#6B6B6B] text-[11px] font-[700] uppercase tracking-[1px] mb-1.5">
+        {label}
+      </label>
       {children}
     </div>
   );
 }
 
-const inputCls = "w-full h-11 bg-white border border-[#F0F0F0] rounded-[8px] px-4 text-[#1D1D1D] text-[14px] focus:outline-none focus:border-[#FF4C00] transition-all";
+const inputCls =
+  'w-full h-11 bg-white border border-[#F0F0F0] rounded-[8px] px-4 text-[#1D1D1D] text-[14px] focus:outline-none focus:border-[#FF4C00] transition-all';
 
 export default function AdminPostEditor() {
   const navigate = useNavigate();
@@ -37,6 +41,8 @@ export default function AdminPostEditor() {
   const [published, setPublished] = useState(false);
   const [saving, setSaving] = useState(false);
   const [slugTouched, setSlugTouched] = useState(false);
+  // Controls when the editor mounts — wait for data on edit pages
+  const [editorReady, setEditorReady] = useState(isNew);
 
   useEffect(() => {
     checkAuth();
@@ -60,6 +66,7 @@ export default function AdminPostEditor() {
     setBody(data.body || '');
     setPublished(data.published);
     setSlugTouched(true);
+    setEditorReady(true); // mount editor only after content is available
   };
 
   const handleTitleChange = (val: string) => {
@@ -109,7 +116,7 @@ export default function AdminPostEditor() {
         </button>
       </header>
 
-      <main className="max-w-[800px] mx-auto px-4 md:px-8 py-10">
+      <main className="max-w-[860px] mx-auto px-4 md:px-8 py-10">
         <h1
           className="text-[#1D1D1D] text-[28px] font-[800] mb-8"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
@@ -132,7 +139,10 @@ export default function AdminPostEditor() {
             <input
               type="text"
               value={slug}
-              onChange={e => { setSlug(e.target.value); setSlugTouched(true); }}
+              onChange={e => {
+                setSlug(e.target.value);
+                setSlugTouched(true);
+              }}
               placeholder="post-url-slug"
               className={inputCls + ' font-mono'}
             />
@@ -140,15 +150,32 @@ export default function AdminPostEditor() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Field label="Category">
-              <input type="text" value={category} onChange={e => setCategory(e.target.value)} placeholder="e.g. Updates, Markets" className={inputCls} />
+              <input
+                type="text"
+                value={category}
+                onChange={e => setCategory(e.target.value)}
+                placeholder="e.g. Updates, Markets"
+                className={inputCls}
+              />
             </Field>
             <Field label="Author">
-              <input type="text" value={author} onChange={e => setAuthor(e.target.value)} className={inputCls} />
+              <input
+                type="text"
+                value={author}
+                onChange={e => setAuthor(e.target.value)}
+                className={inputCls}
+              />
             </Field>
           </div>
 
           <Field label="Cover Image URL">
-            <input type="text" value={coverImage} onChange={e => setCoverImage(e.target.value)} placeholder="https://..." className={inputCls} />
+            <input
+              type="text"
+              value={coverImage}
+              onChange={e => setCoverImage(e.target.value)}
+              placeholder="https://..."
+              className={inputCls}
+            />
           </Field>
 
           <Field label={`Excerpt (${excerpt.length}/200)`}>
@@ -161,14 +188,17 @@ export default function AdminPostEditor() {
             />
           </Field>
 
-          <Field label="Body (HTML or plain text)">
-            <textarea
-              value={body}
-              onChange={e => setBody(e.target.value)}
-              placeholder={"Write your post here.\nYou can use HTML: <p>, <h2>, <strong>, <a href=\"\">, <ul><li>, etc."}
-              rows={20}
-              className="w-full bg-white border border-[#F0F0F0] rounded-[8px] px-4 py-3 text-[#1D1D1D] text-[14px] font-mono focus:outline-none focus:border-[#FF4C00] transition-all resize-y leading-relaxed"
-            />
+          <Field label="Body">
+            {editorReady ? (
+              <RichTextEditor defaultContent={body} onChange={setBody} />
+            ) : (
+              <div
+                className="w-full rounded-[12px] flex items-center justify-center text-[#9CA3AF] text-[14px]"
+                style={{ minHeight: 400, border: '1px solid #F0F0F0' }}
+              >
+                Loading editor…
+              </div>
+            )}
           </Field>
 
           <div className="flex items-center gap-3">
@@ -179,7 +209,10 @@ export default function AdminPostEditor() {
               onChange={e => setPublished(e.target.checked)}
               className="w-4 h-4 cursor-pointer accent-[#FF4C00]"
             />
-            <label htmlFor="published" className="text-[#1D1D1D] text-[14px] font-[500] cursor-pointer">
+            <label
+              htmlFor="published"
+              className="text-[#1D1D1D] text-[14px] font-[500] cursor-pointer"
+            >
               Published
             </label>
           </div>
@@ -197,7 +230,10 @@ export default function AdminPostEditor() {
             onClick={() => save(true)}
             disabled={saving}
             className="flex-1 md:flex-none h-11 px-8 bg-[#FF4C00] text-white rounded-[8px] border-0 cursor-pointer hover:bg-[#E64400] transition-all text-[14px] font-[600] disabled:opacity-70"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", boxShadow: '0 2px 8px rgba(255,76,0,0.3)' }}
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              boxShadow: '0 2px 8px rgba(255,76,0,0.3)',
+            }}
           >
             {saving ? 'Saving…' : 'Publish'}
           </button>
