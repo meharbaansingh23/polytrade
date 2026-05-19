@@ -11,13 +11,28 @@ interface MarketDetailProps {
 
 export function MarketDetail({ market, onBack, onWaitlistClick }: MarketDetailProps) {
   const [selectedSide, setSelectedSide] = useState<'YES' | 'NO'>('YES');
-  const [amount, setAmount] = useState(10);
+  const [amount, setAmount] = useState(0.10);
+  const [amountError, setAmountError] = useState<string | null>(null);
   const [showAbout, setShowAbout] = useState(false);
   const [showCriteria, setShowCriteria] = useState(false);
 
+  const MIN_AMOUNT = 0.10;
   const price = selectedSide === 'YES' ? market.yesPrice : market.noPrice;
   const shares = amount / price;
   const payout = shares;
+
+  const handleAmountChange = (val: string) => {
+    const parsed = parseFloat(val);
+    if (isNaN(parsed) || parsed < MIN_AMOUNT) {
+      setAmount(isNaN(parsed) ? 0 : parsed);
+      setAmountError('Minimum trade is $0.10');
+    } else {
+      setAmount(parsed);
+      setAmountError(null);
+    }
+  };
+
+  const QUICK_AMOUNTS = [0.10, 0.50, 1, 5];
   const odds = Math.round(price * 100);
 
   return (
@@ -144,12 +159,38 @@ export function MarketDetail({ market, onBack, onWaitlistClick }: MarketDetailPr
                 <input
                   type="number"
                   value={amount}
-                  onChange={(e) => setAmount(Math.max(1, parseFloat(e.target.value) || 1))}
+                  min="0.10"
+                  step="0.10"
+                  onChange={(e) => handleAmountChange(e.target.value)}
                   className="w-full bg-transparent border-0 text-[#1D1D1D] text-[28px] font-[900] text-right focus:outline-none mb-1"
                   style={{ fontVariantNumeric: 'tabular-nums' }}
                 />
-                <div className="text-[#6B6B6B] text-[12px] font-[400] text-right">
-                  = {shares.toFixed(1)} shares
+                {amountError ? (
+                  <div className="text-[12px] font-[500] text-right" style={{ color: '#DC2626' }}>
+                    {amountError}
+                  </div>
+                ) : (
+                  <div className="text-[#6B6B6B] text-[12px] font-[400] text-right">
+                    ≈ {shares.toFixed(2)} shares
+                  </div>
+                )}
+                {/* Quick amount buttons */}
+                <div className="flex gap-1.5 mt-3">
+                  {QUICK_AMOUNTS.map((q) => (
+                    <button
+                      key={q}
+                      type="button"
+                      onClick={() => { setAmount(q); setAmountError(null); }}
+                      className="flex-1 py-1.5 rounded-full text-[12px] font-[600] border transition-all duration-200 cursor-pointer"
+                      style={{
+                        background: amount === q ? '#FF4C00' : '#F3F4F6',
+                        color: amount === q ? '#fff' : '#6B6B6B',
+                        borderColor: amount === q ? '#FF4C00' : 'transparent',
+                      }}
+                    >
+                      ${q < 1 ? q.toFixed(2) : q}
+                    </button>
+                  ))}
                 </div>
               </div>
 
@@ -169,8 +210,9 @@ export function MarketDetail({ market, onBack, onWaitlistClick }: MarketDetailPr
               </div>
 
               <button
-                onClick={() => onWaitlistClick(selectedSide, market.question)}
-                className="w-full bg-[#FF4C00] text-white py-4 rounded-[12px] border-0 cursor-pointer hover:bg-[#E64400] transition-all duration-200 text-[16px] font-[700] h-[56px]"
+                onClick={() => !amountError && onWaitlistClick(selectedSide, market.question)}
+                disabled={!!amountError}
+                className="w-full bg-[#FF4C00] text-white py-4 rounded-[12px] border-0 cursor-pointer hover:bg-[#E64400] transition-all duration-200 text-[16px] font-[700] h-[56px] disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ boxShadow: '0 4px 16px rgba(255, 76, 0, 0.35)' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.boxShadow = '0 6px 24px rgba(255, 76, 0, 0.45)';
