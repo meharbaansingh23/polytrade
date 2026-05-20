@@ -24,11 +24,19 @@ export function GeoBlock({ children }: { children: React.ReactNode }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh',
+        minHeight: '100vh',
+        width: '100%',
         background: '#FAFAFA',
         fontFamily: 'Plus Jakarta Sans, sans-serif'
       }}>
-        <div style={{ textAlign: 'center', maxWidth: '400px', padding: '40px' }}>
+        <div style={{
+          textAlign: 'center',
+          maxWidth: '400px',
+          padding: '40px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}>
           <img src="/polytrade_favicon.svg" width="48" style={{ marginBottom: '24px' }} />
           <h1 style={{ color: '#1D1D1D', fontSize: '22px', marginBottom: '12px' }}>
             Not Available in Your Region
