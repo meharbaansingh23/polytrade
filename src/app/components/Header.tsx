@@ -34,8 +34,8 @@ export function Header({
       style={{ boxShadow: '0 1px 0 #F0F0F0' }}
     >
       <div className="flex items-center gap-5 md:gap-8">
-        <Link to="/"><img src="/polytrade_logo_new.svg" alt="PolyTrade" className="h-8 w-auto" /></Link>
-        <Link to="/blog" className="text-[#1D1D1D] text-[13px] md:text-[14px] font-[500] hover:text-[#FF4C00] transition-colors" style={{ textDecoration: 'none' }}>
+        <Link to="/"><img src="/polytrade_logo_new.svg" alt="PolyTrade" className="h-7 md:h-8 w-auto" /></Link>
+        <Link to="/blog" className="hidden md:block text-[#1D1D1D] text-[14px] font-[500] hover:text-[#FF4C00] transition-colors" style={{ textDecoration: 'none' }}>
           Blog
         </Link>
       </div>
@@ -77,7 +77,7 @@ export function Header({
         <div className="flex items-center gap-3">
           <button
             onClick={onWaitlistClick}
-            className="px-[14px] md:px-5 py-[8px] md:py-2 min-h-[44px] bg-[#FF4C00] text-white rounded-[8px] hover:bg-[#E64400] transition-all duration-200 cursor-pointer border-0 text-[13px] md:text-[14px]"
+            className="px-3 py-2 md:px-5 md:py-2 min-h-[44px] bg-[#FF4C00] text-white rounded-[8px] hover:bg-[#E64400] transition-all duration-200 cursor-pointer border-0 text-sm md:text-[14px]"
             style={{ boxShadow: '0 2px 8px rgba(255, 76, 0, 0.3)', fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600 }}
           >
             Join Waitlist

@@ -504,38 +504,30 @@ export default function App() {
           </div>
 
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-            <div className="flex items-center justify-center mb-3">
-              <div className="bg-white border border-[#F0F0F0] rounded-full p-1">
-                <button
-                  onClick={() => setSelectedCountry('southafrica')}
-                  className={`px-5 py-2 rounded-full transition-all duration-200 border-0 cursor-pointer text-[14px] ${
-                    selectedCountry === 'southafrica'
-                      ? 'bg-[#FF4C00] text-white font-[600] shadow-[0_2px_8px_rgba(255,76,0,0.25)]'
-                      : 'bg-transparent text-[#6B6B6B] font-[500]'
-                  }`}
-                >
-                  🇿🇦 South Africa
-                </button>
-                <button
-                  onClick={() => setSelectedCountry('philippines')}
-                  className={`px-5 py-2 rounded-full transition-all duration-200 border-0 cursor-pointer text-[14px] ${
-                    selectedCountry === 'philippines'
-                      ? 'bg-[#FF4C00] text-white font-[600] shadow-[0_2px_8px_rgba(255,76,0,0.25)]'
-                      : 'bg-transparent text-[#6B6B6B] font-[500]'
-                  }`}
-                >
-                  🇵🇭 Philippines
-                </button>
-                <button
-                  onClick={() => setSelectedCountry('poland')}
-                  className={`px-5 py-2 rounded-full transition-all duration-200 border-0 cursor-pointer text-[14px] ${
-                    selectedCountry === 'poland'
-                      ? 'bg-[#FF4C00] text-white font-[600] shadow-[0_2px_8px_rgba(255,76,0,0.25)]'
-                      : 'bg-transparent text-[#6B6B6B] font-[500]'
-                  }`}
-                >
-                  🇵🇱 Poland
-                </button>
+            <div className="flex justify-center mb-3 px-2">
+              <div
+                className="bg-white border border-[#F0F0F0] rounded-full p-1 flex flex-nowrap overflow-x-auto"
+                style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch', msOverflowStyle: 'none' }}
+              >
+                {(
+                  [
+                    { key: 'southafrica', label: '🇿🇦 South Africa' },
+                    { key: 'philippines', label: '🇵🇭 Philippines' },
+                    { key: 'poland',      label: '🇵🇱 Poland' },
+                  ] as const
+                ).map(({ key, label }) => (
+                  <button
+                    key={key}
+                    onClick={() => setSelectedCountry(key)}
+                    className={`px-3 py-2 md:px-5 md:py-2 rounded-full transition-all duration-200 border-0 cursor-pointer text-[13px] md:text-[14px] shrink-0 whitespace-nowrap ${
+                      selectedCountry === key
+                        ? 'bg-[#FF4C00] text-white font-[600] shadow-[0_2px_8px_rgba(255,76,0,0.25)]'
+                        : 'bg-transparent text-[#6B6B6B] font-[500]'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
               </div>
             </div>
 

@@ -1,0 +1,4 @@
+/* Hide scrollbar visually while keeping scroll functional */
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
