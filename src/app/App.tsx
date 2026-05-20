@@ -478,10 +478,10 @@ export default function App() {
                 <span className="text-[12px] font-[600] text-[#FF4C00]">✦ PREDICTION MARKETS · LIVE NOW</span>
               </div>
               <h1 className="text-[#1D1D1D] text-[36px] md:text-[52px] lg:text-[64px] tracking-[-1px] md:tracking-[-2px] lg:tracking-[-3px] leading-[1.1] mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700 }}>
-                Your local knowledge.
+                Your local knowledge,
                 <br />
                 <span className="relative inline-block">
-                  Real money.
+                  Is real money.
                   <svg
                     className="absolute left-0 right-0 bottom-0"
                     style={{ height: '8px', width: '100%' }}
