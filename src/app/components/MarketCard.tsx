@@ -7,7 +7,7 @@ export interface Market {
   noPrice: number;
   volume: number;
   closesDate: string;
-  country: 'southafrica' | 'philippines';
+  country: 'southafrica' | 'philippines' | 'poland';
   category: string;
   resolved?: boolean;
   winner?: 'YES' | 'NO';

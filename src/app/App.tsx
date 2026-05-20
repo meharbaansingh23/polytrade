@@ -140,6 +140,140 @@ const mockMarkets: Market[] = [
     category: 'Infrastructure',
     resolutionSource: 'Kenya Railways',
   },
+  // Poland
+  {
+    id: 'pl1',
+    question: "Will PM Donald Tusk's coalition survive until the 2027 parliamentary elections without collapse?",
+    yesPrice: 0.58,
+    noPrice: 0.42,
+    volume: 7800,
+    closesDate: 'Dec 31, 2026',
+    country: 'poland',
+    category: 'Politics',
+    resolutionSource: 'Polish Parliament Records',
+  },
+  {
+    id: 'pl2',
+    question: 'Will President Nawrocki veto more than 10 government bills before the end of 2026?',
+    yesPrice: 0.71,
+    noPrice: 0.29,
+    volume: 5400,
+    closesDate: 'Dec 31, 2026',
+    country: 'poland',
+    category: 'Politics',
+    resolutionSource: 'Polish Presidential Office',
+  },
+  {
+    id: 'pl3',
+    question: "Will Poland's GDP growth exceed 3.5% in 2026?",
+    yesPrice: 0.52,
+    noPrice: 0.48,
+    volume: 6200,
+    closesDate: 'Mar 31, 2027',
+    country: 'poland',
+    category: 'Economy',
+    resolutionSource: 'Polish Statistical Office (GUS)',
+  },
+  {
+    id: 'pl4',
+    question: 'Will inflation in Poland fall below 3% by December 2026?',
+    yesPrice: 0.61,
+    noPrice: 0.39,
+    volume: 4900,
+    closesDate: 'Jan 15, 2027',
+    country: 'poland',
+    category: 'Economy',
+    resolutionSource: 'National Bank of Poland',
+  },
+  {
+    id: 'pl5',
+    question: "Will Poland's defence spending reach 5% of GDP by end of 2026?",
+    yesPrice: 0.67,
+    noPrice: 0.33,
+    volume: 8100,
+    closesDate: 'Mar 31, 2027',
+    country: 'poland',
+    category: 'Defence',
+    resolutionSource: 'Polish Ministry of National Defence',
+  },
+  {
+    id: 'pl6',
+    question: 'Will US troops be permanently stationed in Poland by end of 2026?',
+    yesPrice: 0.44,
+    noPrice: 0.56,
+    volume: 9300,
+    closesDate: 'Dec 31, 2026',
+    country: 'poland',
+    category: 'Defence',
+    resolutionSource: 'US Department of Defense',
+  },
+  {
+    id: 'pl7',
+    question: 'Will construction begin on the Central Communication Port (CPK) airport before October 2026?',
+    yesPrice: 0.38,
+    noPrice: 0.62,
+    volume: 5700,
+    closesDate: 'Oct 31, 2026',
+    country: 'poland',
+    category: 'Infrastructure',
+    resolutionSource: 'CPK Official Authority',
+  },
+  {
+    id: 'pl8',
+    question: 'Will Poland approve a nuclear power plant construction contract before end of 2026?',
+    yesPrice: 0.29,
+    noPrice: 0.71,
+    volume: 7200,
+    closesDate: 'Dec 31, 2026',
+    country: 'poland',
+    category: 'Energy',
+    resolutionSource: 'Polish Ministry of Climate',
+  },
+  {
+    id: 'pl9',
+    question: 'Will the Polish zloty strengthen past 4.0 per Euro by September 2026?',
+    yesPrice: 0.33,
+    noPrice: 0.67,
+    volume: 4400,
+    closesDate: 'Sep 30, 2026',
+    country: 'poland',
+    category: 'Economy',
+    resolutionSource: 'National Bank of Poland',
+  },
+  {
+    id: 'pl10',
+    question: 'Will PiS poll above 30% nationally before the end of 2026?',
+    yesPrice: 0.41,
+    noPrice: 0.59,
+    volume: 6600,
+    closesDate: 'Dec 31, 2026',
+    country: 'poland',
+    category: 'Politics',
+    resolutionSource: 'Aggregated Polish Polling Data',
+  },
+  {
+    id: 'pl11',
+    question: "Will Warsaw's third Metro line open its first station before December 2026?",
+    yesPrice: 0.45,
+    noPrice: 0.55,
+    volume: 3800,
+    closesDate: 'Dec 31, 2026',
+    country: 'poland',
+    category: 'Infrastructure',
+    resolutionSource: 'Warsaw Metro Authority',
+  },
+  {
+    id: 'pl12',
+    question: 'Will Poland receive full KPO EU recovery fund disbursement before end of 2026?',
+    yesPrice: 0.73,
+    noPrice: 0.27,
+    volume: 8900,
+    closesDate: 'Dec 31, 2026',
+    country: 'poland',
+    category: 'Economy',
+    resolutionSource: 'European Commission',
+  },
+  // Philippines
   {
     id: '13',
     question: 'Will the Manila subway Line 1 extension open before March 2027?',
@@ -211,7 +345,7 @@ const mockMarkets: Market[] = [
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [balance, setBalance] = useState(124.5);
-  const [selectedCountry, setSelectedCountry] = useState<'southafrica' | 'philippines'>(
+  const [selectedCountry, setSelectedCountry] = useState<'southafrica' | 'philippines' | 'poland'>(
     'southafrica'
   );
   const [showWaitlistModal, setShowWaitlistModal] = useState(false);
@@ -391,6 +525,16 @@ export default function App() {
                   }`}
                 >
                   🇵🇭 Philippines
+                </button>
+                <button
+                  onClick={() => setSelectedCountry('poland')}
+                  className={`px-5 py-2 rounded-full transition-all duration-200 border-0 cursor-pointer text-[14px] ${
+                    selectedCountry === 'poland'
+                      ? 'bg-[#FF4C00] text-white font-[600] shadow-[0_2px_8px_rgba(255,76,0,0.25)]'
+                      : 'bg-transparent text-[#6B6B6B] font-[500]'
+                  }`}
+                >
+                  🇵🇱 Poland
                 </button>
               </div>
             </div>

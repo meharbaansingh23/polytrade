@@ -44,7 +44,7 @@ export function MarketDetail({ market, onBack, onWaitlistClick }: MarketDetailPr
         >
           <ArrowLeft className="w-4 h-4" />
           <span>
-            Markets / {market.country === 'southafrica' ? 'South Africa' : 'Philippines'}
+            Markets / {market.country === 'southafrica' ? 'South Africa' : market.country === 'philippines' ? 'Philippines' : 'Poland'}
           </span>
         </button>
       </div>
