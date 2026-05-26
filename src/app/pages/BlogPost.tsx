@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router';
 import { PublicHeader } from '../components/PublicHeader';
+import { Footer } from '../components/Footer';
 import { supabase } from '../../lib/supabase';
 import '../components/RichTextEditor.css';
 
@@ -107,6 +108,7 @@ export default function BlogPost() {
           </>
         ) : null}
       </main>
+      <Footer />
     </div>
   );
 }

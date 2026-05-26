@@ -6,6 +6,7 @@ import { MarketDetail } from './components/MarketDetail';
 import { Profile } from './components/Profile';
 import { TransactionHistory } from './components/TransactionHistory';
 import { WaitlistModal } from './components/WaitlistModal';
+import { Footer } from './components/Footer';
 
 const mockMarkets: Market[] = [
   {
@@ -562,6 +563,8 @@ export default function App() {
           depositJustVerified={depositJustVerified}
         />
       )}
+
+      <Footer />
     </div>
   );
 }

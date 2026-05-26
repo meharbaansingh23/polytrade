@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { PublicHeader } from '../components/PublicHeader';
+import { Footer } from '../components/Footer';
 import { supabase } from '../../lib/supabase';
 
 interface BlogItem {
@@ -88,6 +89,7 @@ export default function Blog() {
           </div>
         )}
       </main>
+      <Footer />
     </div>
   );
 }
