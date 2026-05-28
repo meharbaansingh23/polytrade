@@ -83,6 +83,41 @@ const TABLE_MENU: TableMenuItem[] = [
   { type: 'action', label: 'Delete Table',    action: e => e.chain().focus().deleteTable().run(),  danger: true },
 ];
 
+// ── Colour swatch row (defined outside component for stable reference) ────────
+function ColourSwatches({
+  attribute,
+  editor,
+  onClose,
+}: {
+  attribute: 'backgroundColor' | 'color';
+  editor: any;
+  onClose: () => void;
+}) {
+  return (
+    <div className="flex flex-wrap gap-1 px-4 py-1">
+      {COLOUR_PRESETS.map(({ color, label, border }) => (
+        <button
+          key={color}
+          type="button"
+          title={label}
+          onMouseDown={e => {
+            e.preventDefault();
+            editor.chain().focus().setCellAttribute(attribute, color).run();
+            onClose();
+          }}
+          style={{
+            width: 20, height: 20, borderRadius: '50%', background: color, flexShrink: 0,
+            border: border ? '1.5px solid #D0D0D0' : '1.5px solid transparent',
+            cursor: 'pointer', transition: 'transform 0.1s',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.2)'; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
+        />
+      ))}
+    </div>
+  );
+}
+
 // ── Shared component types ────────────────────────────────────────────────────
 interface RichTextEditorProps {
   defaultContent?: string;
@@ -198,31 +233,6 @@ export function RichTextEditor({ defaultContent = '', onChange }: RichTextEditor
   };
   const removeLink = () => { editor.chain().focus().extendMarkRange('link').unsetLink().run(); setShowLinkPopover(false); };
 
-  // ── Colour swatch row ─────────────────────────────────────────────────────
-  const ColourSwatches = ({ attribute }: { attribute: 'backgroundColor' | 'color' }) => (
-    <div className="flex flex-wrap gap-1 px-4 py-1">
-      {COLOUR_PRESETS.map(({ color, label, border }) => (
-        <button
-          key={color}
-          type="button"
-          title={label}
-          onMouseDown={e => {
-            e.preventDefault();
-            (editor.chain().focus() as any).setCellAttribute(attribute, color).run();
-            setShowTableMenu(false);
-          }}
-          style={{
-            width: 20, height: 20, borderRadius: '50%', background: color, flexShrink: 0,
-            border: border ? '1.5px solid #D0D0D0' : '1.5px solid transparent',
-            cursor: 'pointer', transition: 'transform 0.1s',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.2)'; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
-        />
-      ))}
-    </div>
-  );
-
   // ── Render ────────────────────────────────────────────────────────────────
   return (
     <div>
@@ -279,7 +289,7 @@ export function RichTextEditor({ defaultContent = '', onChange }: RichTextEditor
             {showTableMenu && (
               <div
                 className="absolute top-10 left-0 z-[200] bg-white rounded-[10px] py-1.5"
-                style={{ border: '1px solid #F0F0F0', boxShadow: '0 4px 20px rgba(0,0,0,0.12)', width: '220px' }}
+                style={{ border: '1px solid #F0F0F0', boxShadow: '0 4px 20px rgba(0,0,0,0.12)', width: '220px', maxHeight: '420px', overflowY: 'auto' }}
               >
                 {TABLE_MENU.map((item, i) => {
                   if (item.type === 'divider') {
@@ -291,7 +301,7 @@ export function RichTextEditor({ defaultContent = '', onChange }: RichTextEditor
                         <div className="px-4 pt-1 pb-0.5 text-[11px] font-[600] text-[#9CA3AF] uppercase tracking-[0.5px]">
                           {item.label}
                         </div>
-                        <ColourSwatches attribute={item.attribute} />
+                        <ColourSwatches attribute={item.attribute} editor={editor} onClose={() => setShowTableMenu(false)} />
                       </div>
                     );
                   }
