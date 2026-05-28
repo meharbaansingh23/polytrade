@@ -28,6 +28,7 @@ export default function Blog() {
       .from('blogs')
       .select('id, title, slug, excerpt, cover_image, category, author, created_at')
       .eq('published', true)
+      .order('sort_order', { ascending: true })
       .order('created_at', { ascending: false })
       .then(({ data }) => { setPosts(data || []); setLoading(false); });
   }, []);
