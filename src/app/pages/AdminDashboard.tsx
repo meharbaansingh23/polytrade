@@ -4,6 +4,7 @@ import { supabase } from '../../lib/supabase';
 
 interface PostRow {
   id: string;
+  slug: string;
   title: string;
   category: string | null;
   published: boolean;
@@ -32,7 +33,7 @@ export default function AdminDashboard() {
   const fetchPosts = async () => {
     const { data } = await supabase
       .from('blogs')
-      .select('id, title, category, published, created_at')
+      .select('id, slug, title, category, published, created_at')
       .order('created_at', { ascending: false });
     setPosts(data || []);
     setLoading(false);
@@ -99,7 +100,7 @@ export default function AdminDashboard() {
             style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
           >
             {/* Desktop header row */}
-            <div className="hidden md:grid grid-cols-[1fr_140px_110px_120px_140px] gap-4 px-6 py-3.5 bg-[#FAFAFA] border-b border-[#F0F0F0]">
+            <div className="hidden md:grid grid-cols-[1fr_140px_110px_120px_190px] gap-4 px-6 py-3.5 bg-[#FAFAFA] border-b border-[#F0F0F0]">
               {['Title', 'Category', 'Status', 'Date', 'Actions'].map((h, i) => (
                 <span key={h} className={`text-[11px] font-[700] uppercase tracking-[1px] text-[#9CA3AF] ${i === 4 ? 'text-right' : ''}`}>{h}</span>
               ))}
@@ -108,7 +109,7 @@ export default function AdminDashboard() {
             {posts.map(post => (
               <div
                 key={post.id}
-                className="px-4 md:px-6 py-4 border-b border-[#F3F4F6] last:border-0 flex flex-col gap-2 md:grid md:grid-cols-[1fr_140px_110px_120px_140px] md:gap-4 md:items-center hover:bg-[#FAFAFA] transition-colors"
+                className="px-4 md:px-6 py-4 border-b border-[#F3F4F6] last:border-0 flex flex-col gap-2 md:grid md:grid-cols-[1fr_140px_110px_120px_190px] md:gap-4 md:items-center hover:bg-[#FAFAFA] transition-colors"
               >
                 <div className="text-[#1D1D1D] text-[14px] font-[600] truncate">{post.title}</div>
                 <div className="text-[#6B6B6B] text-[13px]">{post.category || '—'}</div>
@@ -119,6 +120,12 @@ export default function AdminDashboard() {
                 </div>
                 <div className="text-[#9CA3AF] text-[12px]">{formatDate(post.created_at)}</div>
                 <div className="flex items-center gap-4 md:justify-end">
+                  <button
+                    onClick={() => window.open(`/blog/${post.slug}`, '_blank')}
+                    className="text-[#6B6B6B] text-[13px] font-[600] bg-transparent border-0 cursor-pointer hover:text-[#1D1D1D] transition-colors"
+                  >
+                    Visit
+                  </button>
                   <button
                     onClick={() => navigate(`/admin/posts/${post.id}`)}
                     className="text-[#7C3AED] text-[13px] font-[600] bg-transparent border-0 cursor-pointer hover:underline"
