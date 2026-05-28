@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { supabase } from '../../lib/supabase';
 import { RichTextEditor } from '../components/RichTextEditor';
+import { CoverImageUploader } from '../components/CoverImageUploader';
 
 function generateSlug(title: string) {
   return title
@@ -168,14 +169,8 @@ export default function AdminPostEditor() {
             </Field>
           </div>
 
-          <Field label="Cover Image URL">
-            <input
-              type="text"
-              value={coverImage}
-              onChange={e => setCoverImage(e.target.value)}
-              placeholder="https://..."
-              className={inputCls}
-            />
+          <Field label="Cover Image">
+            <CoverImageUploader value={coverImage} onChange={setCoverImage} />
           </Field>
 
           <Field label={`Excerpt (${excerpt.length}/200)`}>

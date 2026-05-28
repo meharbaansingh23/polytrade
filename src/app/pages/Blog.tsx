@@ -58,8 +58,29 @@ export default function Blog() {
                 className="bg-white border border-[#F0F0F0] rounded-[12px] overflow-hidden hover:border-[#FFD4C2] hover:-translate-y-[3px] transition-all duration-200 group block"
                 style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.08)', textDecoration: 'none' }}
               >
-                {post.cover_image && (
-                  <img src={post.cover_image} alt={post.title} className="w-full h-[200px] object-cover" />
+                {post.cover_image ? (
+                  <img
+                    src={post.cover_image}
+                    alt={post.title}
+                    className="w-full h-[200px] object-cover"
+                    onError={e => {
+                      const parent = e.currentTarget.parentElement;
+                      if (parent) {
+                        e.currentTarget.style.display = 'none';
+                        const ph = document.createElement('div');
+                        ph.style.cssText = 'width:100%;height:200px;display:flex;align-items:center;justify-content:center;background:#FAFAFA;border-bottom:1px solid #F0F0F0;';
+                        ph.innerHTML = '<img src="/polytrade_favicon.svg" width="32" height="32" style="opacity:0.3" />';
+                        parent.insertBefore(ph, e.currentTarget);
+                      }
+                    }}
+                  />
+                ) : (
+                  <div
+                    className="w-full h-[200px] flex items-center justify-center"
+                    style={{ background: '#FAFAFA', borderBottom: '1px solid #F0F0F0' }}
+                  >
+                    <img src="/polytrade_favicon.svg" width="32" height="32" style={{ opacity: 0.3 }} alt="" />
+                  </div>
                 )}
                 <div className="p-5 md:p-6">
                   {post.category && (
