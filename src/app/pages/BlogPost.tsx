@@ -13,7 +13,10 @@ interface BlogPostType {
   cover_image: string | null;
   category: string | null;
   author: string;
+  excerpt: string | null;
   created_at: string;
+  meta_title: string | null;
+  meta_description: string | null;
 }
 
 function formatDate(d: string) {
@@ -25,6 +28,27 @@ export default function BlogPost() {
   const [post, setPost] = useState<BlogPostType | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+
+  // Inject per-post meta tags into <head>
+  useEffect(() => {
+    if (!post) return;
+    const pageTitle = `${post.meta_title || post.title} | Polytrade Blog`;
+    document.title = pageTitle;
+
+    const setMeta = (attr: string, key: string, value: string) => {
+      let el = document.querySelector(`meta[${attr}="${key}"]`);
+      if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
+      el.setAttribute('content', value);
+    };
+    const desc = post.meta_description || post.excerpt || '';
+    setMeta('name', 'description', desc);
+    setMeta('property', 'og:title', pageTitle);
+    setMeta('property', 'og:description', desc);
+
+    return () => {
+      document.title = 'Polytrade | Prediction Market for South Africa and the Philippines';
+    };
+  }, [post]);
 
   useEffect(() => {
     if (!slug) return;

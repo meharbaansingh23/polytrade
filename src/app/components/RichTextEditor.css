@@ -108,3 +108,77 @@
 
 .blog-content strong { font-weight: 700; }
 .blog-content em     { font-style: italic; }
+
+/* ── Tables (editor + blog) ─────────────────────────────────── */
+.tiptap-editor .tableWrapper,
+.blog-content .tableWrapper {
+  overflow-x: auto;
+  margin: 1.2em 0;
+}
+
+.tiptap-editor table,
+.blog-content table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1.2em 0;
+  font-family: 'Inter Tight', sans-serif;
+}
+
+.tiptap-editor th,
+.blog-content th {
+  background: #FAFAFA;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #1D1D1D;
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid #E0E0E0;
+}
+
+.tiptap-editor td,
+.blog-content td {
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #3D3D3D;
+  border: 1px solid #E0E0E0;
+  background: #FFFFFF;
+  vertical-align: top;
+}
+
+.tiptap-editor tr:nth-child(even) td,
+.blog-content tr:nth-child(even) td {
+  background: #FAFAFA;
+}
+
+/* TipTap cell selection highlight */
+.tiptap-editor .selectedCell:after {
+  z-index: 2;
+  position: absolute;
+  content: '';
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: rgba(255, 76, 0, 0.08);
+  pointer-events: none;
+}
+.tiptap-editor td,
+.tiptap-editor th {
+  position: relative;
+}
+
+/* ── Links ──────────────────────────────────────────────────── */
+.tiptap-link {
+  color: #FF4C00;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.blog-content a[target="_blank"] {
+  color: #FF4C00;
+  text-decoration: none;
+}
+.blog-content a[target="_blank"]:hover {
+  text-decoration: underline;
+}
